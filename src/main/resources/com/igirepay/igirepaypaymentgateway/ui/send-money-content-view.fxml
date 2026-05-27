@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<StackPane xmlns:fx="http://javafx.com/fxml"
+           fx:controller="com.igirepay.igirepaypaymentgateway.ui.controller.SendMoneyController"
+           style="-fx-background-color:white;"
+           maxWidth="Infinity" maxHeight="Infinity">
+
+    <ScrollPane styleClass="scroll-pane" fitToWidth="true" hbarPolicy="NEVER"
+                maxWidth="Infinity" maxHeight="Infinity">
+        <VBox spacing="20" style="-fx-padding:20 20 20 20; -fx-background-color:white;">
+
+            <Label text="Send money to" styleClass="page-title"/>
+
+            <!-- Type selector -->
+            <HBox styleClass="send-type-box" alignment="CENTER">
+                <VBox fx:id="iroUserCard" styleClass="send-type-btn"
+                      alignment="CENTER" spacing="8"
+                      onMouseClicked="#onSelectIROUser" HBox.hgrow="ALWAYS">
+                    <Label text="💸" styleClass="send-type-icon"/>
+                    <Label text="IROPay user" styleClass="send-type-label"/>
+                </VBox>
+                <Region styleClass="send-type-divider"/>
+                <VBox fx:id="bankCard" styleClass="send-type-btn"
+                      alignment="CENTER" spacing="8"
+                      onMouseClicked="#onSelectBank" HBox.hgrow="ALWAYS">
+                    <Label text="🏦" styleClass="send-type-icon"/>
+                    <Label text="Bank Account" styleClass="send-type-label"/>
+                </VBox>
+            </HBox>
+
+            <!-- Form -->
+            <VBox spacing="12">
+                <Label text="FROM ACCOUNT" styleClass="form-section-label"/>
+                <ComboBox fx:id="fromAccountCombo" maxWidth="Infinity" styleClass="combo-input"/>
+
+                <Label fx:id="toLabel" text="RECIPIENT PHONE NUMBER" styleClass="form-section-label"/>
+                <TextField fx:id="toAccountField" promptText="e.g. 0781234567"
+                           styleClass="input-field" maxWidth="Infinity"/>
+                <Label fx:id="recipientLabel" text="" minHeight="18"/>
+
+                <Label text="AMOUNT (RWF)" styleClass="form-section-label"/>
+                <TextField fx:id="amountField" promptText="0"
+                           styleClass="input-field" maxWidth="Infinity"/>
+
+                <Label text="DESCRIPTION" styleClass="form-section-label"/>
+                <TextField fx:id="descField" promptText="e.g. Payment for services"
+                           styleClass="input-field" maxWidth="Infinity"/>
+
+                <Label text="CONFIRM PIN" styleClass="form-section-label"/>
+                <PasswordField fx:id="pinField" promptText="Enter your PIN"
+                               styleClass="input-field" maxWidth="Infinity"/>
+
+                <Label fx:id="statusLabel" styleClass="msg-error"
+                       wrapText="true" maxWidth="Infinity" minHeight="20"/>
+
+                <Button text="SEND MONEY" styleClass="btn-teal"
+                        maxWidth="Infinity" onAction="#onSend"/>
+            </VBox>
+
+            <!-- Recent transfers -->
+            <Label text="RECENT TRANSFERS" styleClass="section-header"/>
+            <VBox fx:id="recentTransfersBox" spacing="10"/>
+            <Region prefHeight="10"/>
+        </VBox>
+    </ScrollPane>
+</StackPane>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<StackPane xmlns:fx="http://javafx.com/fxml"
+           fx:controller="com.igirepay.igirepaypaymentgateway.ui.controller.AccountsController"
+           style="-fx-background-color:white;"
+           maxWidth="Infinity" maxHeight="Infinity">
+    <ScrollPane styleClass="scroll-pane" fitToWidth="true" hbarPolicy="NEVER"
+                maxWidth="Infinity" maxHeight="Infinity">
+        <VBox spacing="16" style="-fx-padding:20 20 20 20; -fx-background-color:white;">
+            <Label text="My Accounts" styleClass="page-title"/>
+
+            <Label text="YOUR ACCOUNTS" styleClass="section-header"/>
+            <TableView fx:id="accountsTable" prefHeight="200" styleClass="table-view"
+                       maxWidth="Infinity">
+                <columns>
+                    <TableColumn fx:id="colId"       text="ID"            prefWidth="60"/>
+                    <TableColumn fx:id="colType"     text="Type"          prefWidth="110"/>
+                    <TableColumn fx:id="colBalance"  text="Balance (RWF)" prefWidth="150"/>
+                    <TableColumn fx:id="colCurrency" text="Currency"      prefWidth="80"/>
+                    <TableColumn fx:id="colCreated"  text="Created"       prefWidth="150"/>
+                </columns>
+                <placeholder>
+                    <Label text="No accounts yet." styleClass="page-subtitle"/>
+                </placeholder>
+            </TableView>
+
+            <HBox spacing="12" alignment="CENTER_LEFT">
+                <Button text="🗑  Delete Selected" styleClass="btn-accent"
+                        style="-fx-pref-height:42px; -fx-background-radius:10;"
+                        onAction="#onDeleteAccount"/>
+                <Label fx:id="deleteStatusLabel" styleClass="msg-error"/>
+            </HBox>
+
+            <Separator/>
+            <Label text="CREATE NEW ACCOUNT" styleClass="section-header"/>
+            <HBox spacing="16">
+                <VBox spacing="8" HBox.hgrow="ALWAYS">
+                    <Label text="ACCOUNT TYPE" styleClass="form-section-label"/>
+                    <ComboBox fx:id="accountTypeCombo" maxWidth="Infinity" styleClass="combo-input"/>
+                </VBox>
+                <VBox spacing="8" HBox.hgrow="ALWAYS">
+                    <Label text="INITIAL DEPOSIT (RWF)" styleClass="form-section-label"/>
+                    <TextField fx:id="initialBalanceField" promptText="0"
+                               styleClass="input-field" maxWidth="Infinity"/>
+                </VBox>
+            </HBox>
+            <Button text="CREATE ACCOUNT" styleClass="btn-teal"
+                    maxWidth="Infinity" onAction="#onCreateAccount"/>
+            <Label fx:id="createStatusLabel" styleClass="msg-error" wrapText="true"/>
+            <Region prefHeight="10"/>
+        </VBox>
+    </ScrollPane>
+</StackPane>

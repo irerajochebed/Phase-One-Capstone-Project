@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+
+<StackPane xmlns:fx="http://javafx.com/fxml"
+           fx:controller="com.igirepay.igirepaypaymentgateway.ui.controller.DashboardContentController"
+           style="-fx-background-color:white;"
+           maxWidth="Infinity" maxHeight="Infinity">
+
+    <ScrollPane styleClass="scroll-pane" fitToWidth="true" hbarPolicy="NEVER"
+                maxWidth="Infinity" maxHeight="Infinity">
+        <VBox spacing="20" style="-fx-padding:20 20 20 20; -fx-background-color:white;">
+
+            <!-- Balance Card -->
+            <VBox styleClass="balance-card" spacing="8">
+                <Label fx:id="phoneLabel" text="" styleClass="balance-phone"/>
+                <HBox alignment="CENTER_LEFT" spacing="10">
+                    <Label text="RWF" styleClass="balance-currency"/>
+                    <Label fx:id="balanceLabel" text="0" styleClass="balance-amount"/>
+                    <Button text="👁" styleClass="balance-view-btn"
+                            onAction="#onToggleBalance"/>
+                </HBox>
+                <Separator style="-fx-background-color:rgba(255,255,255,0.2);"/>
+                <Button text="⇄   View Transactions" styleClass="balance-view-btn"
+                        onAction="#onTransactions"/>
+            </VBox>
+
+            <!-- Service tiles -->
+            <Label text="SERVICES" styleClass="section-header"/>
+            <HBox spacing="12">
+                <VBox styleClass="service-tile" alignment="CENTER" spacing="8"
+                      HBox.hgrow="ALWAYS" onMouseClicked="#onSendMoney">
+                    <Label text="✈" styleClass="service-tile-icon"/>
+                    <Label text="Send Money" styleClass="service-tile-label"/>
+                </VBox>
+                <VBox styleClass="service-tile" alignment="CENTER" spacing="8"
+                      HBox.hgrow="ALWAYS" onMouseClicked="#onDeposit">
+                    <Label text="📥" styleClass="service-tile-icon"/>
+                    <Label text="Deposit" styleClass="service-tile-label"/>
+                </VBox>
+                <VBox styleClass="service-tile" alignment="CENTER" spacing="8"
+                      HBox.hgrow="ALWAYS" onMouseClicked="#onWithdraw">
+                    <Label text="📤" styleClass="service-tile-icon"/>
+                    <Label text="Withdraw" styleClass="service-tile-label"/>
+                </VBox>
+            </HBox>
+            <HBox spacing="12">
+                <VBox styleClass="service-tile" alignment="CENTER" spacing="8"
+                      HBox.hgrow="ALWAYS" onMouseClicked="#onTransactions">
+                    <Label text="📋" styleClass="service-tile-icon"/>
+                    <Label text="History" styleClass="service-tile-label"/>
+                </VBox>
+                <VBox styleClass="service-tile" alignment="CENTER" spacing="8"
+                      HBox.hgrow="ALWAYS" onMouseClicked="#onAccounts">
+                    <Label text="🏦" styleClass="service-tile-icon"/>
+                    <Label text="Accounts" styleClass="service-tile-label"/>
+                </VBox>
+                <VBox styleClass="service-tile" alignment="CENTER" spacing="8"
+                      HBox.hgrow="ALWAYS" onMouseClicked="#onLoans">
+                    <Label text="💰" styleClass="service-tile-icon"/>
+                    <Label text="Loans" styleClass="service-tile-label"/>
+                </VBox>
+            </HBox>
+            <HBox spacing="12">
+                <VBox styleClass="service-tile" alignment="CENTER" spacing="8"
+                      HBox.hgrow="ALWAYS" onMouseClicked="#onSettings">
+                    <Label text="⚙" styleClass="service-tile-icon"/>
+                    <Label text="Settings" styleClass="service-tile-label"/>
+                </VBox>
+                <!-- Empty tiles for alignment -->
+                <VBox HBox.hgrow="ALWAYS"/>
+                <VBox HBox.hgrow="ALWAYS"/>
+            </HBox>
+
+            <!-- Admin Panel (visible only for admins) -->
+            <VBox fx:id="adminPanelSection" spacing="12" managed="false" visible="false">
+                <Label text="ADMIN TOOLS" styleClass="section-header"/>
+                <HBox spacing="12">
+                    <VBox styleClass="service-tile" alignment="CENTER" spacing="8"
+                          onMouseClicked="#onAdminPanel"
+                          style="-fx-background-color: linear-gradient(to bottom right, #F5A623, #F59E0B); -fx-border-color: #F5A623;">
+                        <Label text="👑" styleClass="service-tile-icon" style="-fx-text-fill: white;"/>
+                        <Label text="Admin Panel" styleClass="service-tile-label" style="-fx-text-fill: white;"/>
+                    </VBox>
+                </HBox>
+            </VBox>
+
+            <!-- Recent transactions -->
+            <Label text="RECENT TRANSACTIONS" styleClass="section-header"/>
+            <VBox fx:id="recentTxBox" spacing="10"/>
+            <Region prefHeight="10"/>
+        </VBox>
+    </ScrollPane>
+</StackPane>

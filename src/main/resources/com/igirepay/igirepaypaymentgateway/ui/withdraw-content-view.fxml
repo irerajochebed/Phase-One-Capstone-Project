@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<StackPane xmlns:fx="http://javafx.com/fxml"
+           fx:controller="com.igirepay.igirepaypaymentgateway.ui.controller.WithdrawController"
+           style="-fx-background-color:white;"
+           maxWidth="Infinity" maxHeight="Infinity">
+    <ScrollPane styleClass="scroll-pane" fitToWidth="true" hbarPolicy="NEVER"
+                maxWidth="Infinity" maxHeight="Infinity">
+        <VBox spacing="16" style="-fx-padding:24 24 24 24; -fx-background-color:white;">
+            <Label text="Withdraw Money" styleClass="page-title"/>
+            <Label text="Withdraw funds from your account" styleClass="page-subtitle"/>
+
+            <Label text="FROM ACCOUNT" styleClass="form-section-label"/>
+            <ComboBox fx:id="accountCombo" maxWidth="Infinity" styleClass="combo-input"/>
+
+            <Label text="AMOUNT (RWF)" styleClass="form-section-label"/>
+            <TextField fx:id="amountField" promptText="e.g. 5 000"
+                       styleClass="input-field" maxWidth="Infinity"/>
+
+            <Label text="DESCRIPTION (optional)" styleClass="form-section-label"/>
+            <TextField fx:id="descField" promptText="e.g. Airtime purchase"
+                       styleClass="input-field" maxWidth="Infinity"/>
+
+            <Label text="CONFIRM PIN" styleClass="form-section-label"/>
+            <PasswordField fx:id="pinField" promptText="Enter your PIN"
+                           styleClass="input-field" maxWidth="Infinity"/>
+
+            <Label fx:id="statusLabel" styleClass="msg-error"
+                   wrapText="true" maxWidth="Infinity" minHeight="20"/>
+
+            <Button text="WITHDRAW" styleClass="btn-teal"
+                    maxWidth="Infinity" onAction="#onDoWithdraw"/>
+        </VBox>
+    </ScrollPane>
+</StackPane>

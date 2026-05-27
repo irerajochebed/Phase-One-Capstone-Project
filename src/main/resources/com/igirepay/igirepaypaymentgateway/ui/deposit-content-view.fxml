@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<StackPane xmlns:fx="http://javafx.com/fxml"
+           fx:controller="com.igirepay.igirepaypaymentgateway.ui.controller.DepositController"
+           style="-fx-background-color:white;"
+           maxWidth="Infinity" maxHeight="Infinity">
+    <ScrollPane styleClass="scroll-pane" fitToWidth="true" hbarPolicy="NEVER"
+                maxWidth="Infinity" maxHeight="Infinity">
+        <VBox spacing="16" style="-fx-padding:24 24 24 24; -fx-background-color:white;">
+            <Label text="Deposit Money" styleClass="page-title"/>
+            <Label text="Add funds to your account" styleClass="page-subtitle"/>
+
+            <Label text="TO ACCOUNT" styleClass="form-section-label"/>
+            <ComboBox fx:id="accountCombo" maxWidth="Infinity" styleClass="combo-input"/>
+
+            <Label text="AMOUNT (RWF)" styleClass="form-section-label"/>
+            <TextField fx:id="amountField" promptText="e.g. 10 000"
+                       styleClass="input-field" maxWidth="Infinity"/>
+
+            <Label text="DESCRIPTION (optional)" styleClass="form-section-label"/>
+            <TextField fx:id="descField" promptText="e.g. Top-up from bank"
+                       styleClass="input-field" maxWidth="Infinity"/>
+
+            <Label fx:id="statusLabel" styleClass="msg-error"
+                   wrapText="true" maxWidth="Infinity" minHeight="20"/>
+
+            <Button text="DEPOSIT" styleClass="btn-teal"
+                    maxWidth="Infinity" onAction="#onDoDeposit"/>
+        </VBox>
+    </ScrollPane>
+</StackPane>

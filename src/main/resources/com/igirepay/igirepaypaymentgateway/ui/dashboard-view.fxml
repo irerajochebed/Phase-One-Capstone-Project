@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.image.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.igirepay.igirepaypaymentgateway.ui.controller.DashboardController"
+            style="-fx-background-color:white;"
+            maxWidth="Infinity" maxHeight="Infinity">
+
+    <!-- ══ TOP HEADER ══ -->
+    <top>
+        <HBox styleClass="header-bar" alignment="CENTER">
+            <Button text="👤" styleClass="header-icon-btn" onAction="#onShowAccount"/>
+            <Label text="Account" style="-fx-text-fill:rgba(255,255,255,0.8); -fx-font-size:12px;"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <!-- Igire Rwanda Logo in center -->
+            <ImageView fx:id="headerLogoView" fitWidth="50" fitHeight="50" preserveRatio="true"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Label text="Notifications" style="-fx-text-fill:rgba(255,255,255,0.8); -fx-font-size:12px;"/>
+            <Button text="🔔" styleClass="header-icon-btn" onAction="#onNotifications"/>
+        </HBox>
+    </top>
+
+    <!-- ══ MAIN CONTENT ══ -->
+    <center>
+        <ScrollPane styleClass="scroll-pane" fitToWidth="true" hbarPolicy="NEVER">
+            <VBox spacing="20" style="-fx-padding: 20 20 20 20; -fx-background-color:white;">
+
+                <!-- Balance Card -->
+                <VBox styleClass="balance-card" spacing="8">
+                    <Label fx:id="phoneLabel" text="" styleClass="balance-phone"/>
+                    <HBox alignment="CENTER_LEFT" spacing="10">
+                        <Label fx:id="currencyLabel" text="RWF" styleClass="balance-currency"/>
+                        <Label fx:id="balanceLabel"  text="0" styleClass="balance-amount"/>
+                        <Button text="👁" styleClass="balance-view-btn"
+                                onAction="#onToggleBalance"/>
+                    </HBox>
+                    <Separator style="-fx-background-color:rgba(255,255,255,0.2);"/>
+                    <Button text="⇄   View Transactions" styleClass="balance-view-btn"
+                            onAction="#onTransactions"/>
+                </VBox>
+
+                <!-- Service tiles grid -->
+                <Label text="SERVICES" styleClass="section-header"/>
+                <HBox spacing="12">
+                    <VBox styleClass="service-tile" alignment="CENTER" spacing="8"
+                          onMouseClicked="#onSendMoney">
+                        <Label text="✈" styleClass="service-tile-icon"/>
+                        <Label text="Send Money" styleClass="service-tile-label"/>
+                    </VBox>
+                    <VBox styleClass="service-tile" alignment="CENTER" spacing="8"
+                          onMouseClicked="#onDeposit">
+                        <Label text="📥" styleClass="service-tile-icon"/>
+                        <Label text="Deposit" styleClass="service-tile-label"/>
+                    </VBox>
+                    <VBox styleClass="service-tile" alignment="CENTER" spacing="8"
+                          onMouseClicked="#onWithdraw">
+                        <Label text="📤" styleClass="service-tile-icon"/>
+                        <Label text="Withdraw" styleClass="service-tile-label"/>
+                    </VBox>
+                </HBox>
+                <HBox spacing="12">
+                    <VBox styleClass="service-tile" alignment="CENTER" spacing="8"
+                          onMouseClicked="#onTransactions">
+                        <Label text="📋" styleClass="service-tile-icon"/>
+                        <Label text="History" styleClass="service-tile-label"/>
+                    </VBox>
+                    <VBox styleClass="service-tile" alignment="CENTER" spacing="8"
+                          onMouseClicked="#onAccounts">
+                        <Label text="🏦" styleClass="service-tile-icon"/>
+                        <Label text="Accounts" styleClass="service-tile-label"/>
+                    </VBox>
+                    <VBox styleClass="service-tile" alignment="CENTER" spacing="8"
+                          onMouseClicked="#onShowAccount">
+                        <Label text="⚙" styleClass="service-tile-icon"/>
+                        <Label text="Settings" styleClass="service-tile-label"/>
+                    </VBox>
+                </HBox>
+                
+                <!-- Admin Panel (visible only for admins) -->
+                <VBox fx:id="adminPanelSection" spacing="12" managed="false" visible="false">
+                    <Label text="ADMIN TOOLS" styleClass="section-header"/>
+                    <HBox spacing="12">
+                        <VBox styleClass="service-tile" alignment="CENTER" spacing="8"
+                              onMouseClicked="#onAdminPanel"
+                              style="-fx-background-color: linear-gradient(to bottom right, #F5A623, #F59E0B); -fx-border-color: #F5A623;">
+                            <Label text="👑" styleClass="service-tile-icon" style="-fx-text-fill: white;"/>
+                            <Label text="Admin Panel" styleClass="service-tile-label" style="-fx-text-fill: white;"/>
+                        </VBox>
+                    </HBox>
+                </VBox>
+
+                <!-- Recent transactions -->
+                <Label text="RECENT TRANSACTIONS" styleClass="section-header"/>
+                <VBox fx:id="recentTxBox" spacing="10"/>
+
+                <Region prefHeight="20"/>
+            </VBox>
+        </ScrollPane>
+    </center>
+
+    <!-- ══ BOTTOM NAV ══ -->
+    <bottom>
+        <HBox styleClass="bottom-nav-bar" alignment="CENTER">
+
+            <!-- Home -->
+            <Button styleClass="nav-btn" onAction="#onHome" HBox.hgrow="ALWAYS">
+                <graphic><VBox alignment="CENTER" spacing="3">
+                    <Label text="🏠" styleClass="nav-btn-icon-active"/>
+                    <Label text="Home" styleClass="nav-btn-label-active"/>
+                </VBox></graphic>
+            </Button>
+
+            <!-- Send -->
+            <Button styleClass="nav-btn" onAction="#onSendMoney" HBox.hgrow="ALWAYS">
+                <graphic><VBox alignment="CENTER" spacing="3">
+                    <Label text="✈" styleClass="nav-btn-icon"/>
+                    <Label text="Send" styleClass="nav-btn-label"/>
+                </VBox></graphic>
+            </Button>
+
+            <!-- IRO Pay centre button -->
+            <StackPane HBox.hgrow="ALWAYS" alignment="CENTER">
+                <Circle radius="31" fill="#F5A623"
+                        style="-fx-effect: dropshadow(gaussian,rgba(245,166,35,0.5),12,0,0,0);"/>
+                <VBox alignment="CENTER" spacing="1"
+                      onMouseClicked="#onSendMoney" style="-fx-cursor:hand;">
+                    <Label text="IRO" style="-fx-text-fill:#0D4F6C; -fx-font-size:12px; -fx-font-weight:bold;"/>
+                    <Label text="Pay"  style="-fx-text-fill:#0D4F6C; -fx-font-size:10px;"/>
+                </VBox>
+            </StackPane>
+
+            <!-- History -->
+            <Button styleClass="nav-btn" onAction="#onTransactions" HBox.hgrow="ALWAYS">
+                <graphic><VBox alignment="CENTER" spacing="3">
+                    <Label text="📋" styleClass="nav-btn-icon"/>
+                    <Label text="History" styleClass="nav-btn-label"/>
+                </VBox></graphic>
+            </Button>
+
+            <!-- Settings -->
+            <Button styleClass="nav-btn" onAction="#onShowAccount" HBox.hgrow="ALWAYS">
+                <graphic><VBox alignment="CENTER" spacing="3">
+                    <Label text="⚙" styleClass="nav-btn-icon"/>
+                    <Label text="Settings" styleClass="nav-btn-label"/>
+                </VBox></graphic>
+            </Button>
+
+        </HBox>
+    </bottom>
+</BorderPane>

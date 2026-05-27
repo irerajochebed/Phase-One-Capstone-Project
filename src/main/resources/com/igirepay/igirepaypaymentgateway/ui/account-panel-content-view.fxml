@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+
+<StackPane xmlns:fx="http://javafx.com/fxml"
+           fx:controller="com.igirepay.igirepaypaymentgateway.ui.controller.AccountPanelController"
+           style="-fx-background-color:white;"
+           maxWidth="Infinity" maxHeight="Infinity">
+    <ScrollPane styleClass="scroll-pane" fitToWidth="true" hbarPolicy="NEVER"
+                maxWidth="Infinity" maxHeight="Infinity">
+        <VBox spacing="16" style="-fx-padding:24 24 24 24; -fx-background-color:white;">
+
+            <!-- User info -->
+            <HBox alignment="CENTER_LEFT" spacing="16">
+                <StackPane>
+                    <Circle radius="30" fill="#F5A623"/>
+                    <Label text="👤" style="-fx-font-size:24px;"/>
+                </StackPane>
+                <VBox spacing="4">
+                    <Label fx:id="userNameLabel" text="" styleClass="account-name"/>
+                    <Label fx:id="userPhoneLabel" text="" styleClass="account-phone"/>
+                </VBox>
+            </HBox>
+
+            <Separator/>
+
+            <!-- Menu rows -->
+            <VBox styleClass="menu-row" onMouseClicked="#onChangePin">
+                <HBox alignment="CENTER_LEFT" spacing="14">
+                    <Label text="⚙" style="-fx-font-size:20px; -fx-text-fill:#F5A623;"/>
+                    <VBox spacing="2" HBox.hgrow="ALWAYS">
+                        <Label text="Settings" styleClass="menu-row-title"/>
+                        <Label text="Change PIN, manage account" styleClass="menu-row-sub"/>
+                    </VBox>
+                    <Label text="›" styleClass="menu-row-arrow"/>
+                </HBox>
+            </VBox>
+
+            <VBox styleClass="menu-row" onMouseClicked="#onAccounts">
+                <HBox alignment="CENTER_LEFT" spacing="14">
+                    <Label text="🏦" style="-fx-font-size:20px; -fx-text-fill:#F5A623;"/>
+                    <VBox spacing="2" HBox.hgrow="ALWAYS">
+                        <Label text="My Accounts" styleClass="menu-row-title"/>
+                        <Label text="View balances, create accounts" styleClass="menu-row-sub"/>
+                    </VBox>
+                    <Label text="›" styleClass="menu-row-arrow"/>
+                </HBox>
+            </VBox>
+
+            <VBox styleClass="menu-row" onMouseClicked="#onTransactions">
+                <HBox alignment="CENTER_LEFT" spacing="14">
+                    <Label text="📋" style="-fx-font-size:20px; -fx-text-fill:#F5A623;"/>
+                    <VBox spacing="2" HBox.hgrow="ALWAYS">
+                        <Label text="Transaction History" styleClass="menu-row-title"/>
+                        <Label text="View all your transactions" styleClass="menu-row-sub"/>
+                    </VBox>
+                    <Label text="›" styleClass="menu-row-arrow"/>
+                </HBox>
+            </VBox>
+
+            <!-- Change PIN form -->
+            <VBox fx:id="changePinBox" spacing="10" managed="false" visible="false">
+                <Separator/>
+                <Label text="CHANGE PIN" styleClass="form-section-label"/>
+                <PasswordField fx:id="currentPinField" promptText="Current PIN"
+                               styleClass="input-field"/>
+                <PasswordField fx:id="newPinField" promptText="New PIN (4 digits)"
+                               styleClass="input-field"/>
+                <PasswordField fx:id="confirmPinField" promptText="Confirm new PIN"
+                               styleClass="input-field"/>
+                <Label fx:id="pinStatusLabel" styleClass="msg-error" wrapText="true"/>
+                <Button text="SAVE NEW PIN" styleClass="btn-teal"
+                        maxWidth="Infinity" onAction="#onSavePin"/>
+            </VBox>
+
+            <Region prefHeight="20"/>
+
+            <!-- Sign out -->
+            <Button onAction="#onSignOut" maxWidth="Infinity"
+                    style="-fx-background-color:transparent; -fx-cursor:hand;">
+                <graphic>
+                    <HBox spacing="10" alignment="CENTER">
+                        <Label text="⎋" style="-fx-text-fill:#F5A623; -fx-font-size:18px;"/>
+                        <Label text="Sign out"
+                               style="-fx-text-fill:#F5A623; -fx-font-size:15px; -fx-font-weight:bold;"/>
+                    </HBox>
+                </graphic>
+            </Button>
+        </VBox>
+    </ScrollPane>
+</StackPane>
