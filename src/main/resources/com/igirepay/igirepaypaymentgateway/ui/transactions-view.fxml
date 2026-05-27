@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.igirepay.igirepaypaymentgateway.ui.controller.TransactionsController"
+            style="-fx-background-color:white;"
+            maxWidth="Infinity" maxHeight="Infinity">
+    <top>
+        <HBox styleClass="header-bar" alignment="CENTER_LEFT" spacing="12">
+            <Button text="←" styleClass="header-icon-btn" onAction="#onDashboard"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Label text="Transaction History" styleClass="header-title"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Button text="✕" styleClass="header-icon-btn" onAction="#onDashboard"/>
+        </HBox>
+    </top>
+    <center>
+        <VBox style="-fx-background-color:white; -fx-padding: 16 20 0 20;" spacing="12">
+
+            <!-- Filter bar -->
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <ComboBox fx:id="accountFilterCombo" promptText="All Accounts"
+                          styleClass="combo-input" prefWidth="180"/>
+                <ComboBox fx:id="typeFilterCombo" promptText="All Types"
+                          styleClass="combo-input" prefWidth="140"/>
+                <TextField fx:id="keywordField" promptText="Search..."
+                           styleClass="input-field" prefWidth="160"/>
+                <Button text="🔍" styleClass="btn-teal"
+                        style="-fx-pref-height:46px; -fx-pref-width:46px; -fx-background-radius:10;"
+                        onAction="#onSearch"/>
+            </HBox>
+
+            <Label fx:id="countLabel" styleClass="page-subtitle"/>
+
+            <!-- Transactions table -->
+            <TableView fx:id="txTable" VBox.vgrow="ALWAYS" styleClass="table-view">
+                <columns>
+                    <TableColumn fx:id="colDate"   text="Date"         prefWidth="130"/>
+                    <TableColumn fx:id="colType"   text="Type"         prefWidth="100"/>
+                    <TableColumn fx:id="colAmount" text="Amount (RWF)" prefWidth="120"/>
+                    <TableColumn fx:id="colDesc"   text="Description"  prefWidth="180"/>
+                    <TableColumn fx:id="colStatus" text="Status"       prefWidth="80"/>
+                </columns>
+                <placeholder>
+                    <Label text="No transactions found." styleClass="page-subtitle"/>
+                </placeholder>
+            </TableView>
+        </VBox>
+    </center>
+    <bottom>
+        <HBox styleClass="bottom-nav-bar" alignment="CENTER">
+            <Button styleClass="nav-btn" onAction="#onDashboard" HBox.hgrow="ALWAYS">
+                <graphic><VBox alignment="CENTER" spacing="3"><Label text="🏠" styleClass="nav-btn-icon"/><Label text="Home" styleClass="nav-btn-label"/></VBox></graphic>
+            </Button>
+            <Button styleClass="nav-btn" onAction="#onSendMoney" HBox.hgrow="ALWAYS">
+                <graphic><VBox alignment="CENTER" spacing="3"><Label text="✈" styleClass="nav-btn-icon"/><Label text="Send" styleClass="nav-btn-label"/></VBox></graphic>
+            </Button>
+            <StackPane HBox.hgrow="ALWAYS" alignment="CENTER">
+                <Circle radius="31" fill="#F5A623" style="-fx-effect: dropshadow(gaussian,rgba(245,166,35,0.5),12,0,0,0);"/>
+                <VBox alignment="CENTER" spacing="1" onMouseClicked="#onSendMoney" style="-fx-cursor:hand;">
+                    <Label text="IRO" style="-fx-text-fill:#0D4F6C; -fx-font-size:12px; -fx-font-weight:bold;"/>
+                    <Label text="Pay" style="-fx-text-fill:#0D4F6C; -fx-font-size:10px;"/>
+                </VBox>
+            </StackPane>
+            <Button styleClass="nav-btn" onAction="#onTransactions" HBox.hgrow="ALWAYS">
+                <graphic><VBox alignment="CENTER" spacing="3"><Label text="📋" styleClass="nav-btn-icon-active"/><Label text="History" styleClass="nav-btn-label-active"/></VBox></graphic>
+            </Button>
+            <Button styleClass="nav-btn" onAction="#onShowAccount" HBox.hgrow="ALWAYS">
+                <graphic><VBox alignment="CENTER" spacing="3"><Label text="⚙" styleClass="nav-btn-icon"/><Label text="Settings" styleClass="nav-btn-label"/></VBox></graphic>
+            </Button>
+        </HBox>
+    </bottom>
+</BorderPane>

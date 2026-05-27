@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.igirepay.igirepaypaymentgateway.ui.controller.AdminLoansController"
+            style="-fx-background-color:white;"
+            maxWidth="Infinity" maxHeight="Infinity">
+
+    <!-- Header -->
+    <top>
+        <HBox styleClass="header-bar" alignment="CENTER_LEFT" spacing="12">
+            <Button text="←" styleClass="header-icon-btn" onAction="#onBack"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Label text="💰 Loan Management" styleClass="header-title"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Button text="🔄" styleClass="header-icon-btn" onAction="#onRefresh"/>
+        </HBox>
+    </top>
+
+    <center>
+        <ScrollPane styleClass="scroll-pane" fitToWidth="true" hbarPolicy="NEVER">
+            <VBox spacing="20" style="-fx-padding: 24 20 20 20; -fx-background-color:white;">
+
+                <!-- Statistics Cards -->
+                <HBox spacing="15">
+                    <VBox style="-fx-background-color: #FEF3C7; -fx-padding: 16; -fx-background-radius: 12; -fx-border-color: #F59E0B; -fx-border-width: 2; -fx-border-radius: 12;" HBox.hgrow="ALWAYS">
+                        <Label text="⏳ Pending" style="-fx-font-size: 12px; -fx-text-fill: #92400E; -fx-font-weight: bold;"/>
+                        <Label fx:id="pendingLoansLabel" text="0" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #92400E;"/>
+                    </VBox>
+                    <VBox style="-fx-background-color: #ECFDF5; -fx-padding: 16; -fx-background-radius: 12; -fx-border-color: #10B981; -fx-border-width: 2; -fx-border-radius: 12;" HBox.hgrow="ALWAYS">
+                        <Label text="✅ Active" style="-fx-font-size: 12px; -fx-text-fill: #065F46; -fx-font-weight: bold;"/>
+                        <Label fx:id="activeLoansLabel" text="0" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #065F46;"/>
+                    </VBox>
+                    <VBox style="-fx-background-color: #FEE2E2; -fx-padding: 16; -fx-background-radius: 12; -fx-border-color: #EF4444; -fx-border-width: 2; -fx-border-radius: 12;" HBox.hgrow="ALWAYS">
+                        <Label text="⚠️ Overdue" style="-fx-font-size: 12px; -fx-text-fill: #991B1B; -fx-font-weight: bold;"/>
+                        <Label fx:id="overdueLoansLabel" text="0" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #991B1B;"/>
+                    </VBox>
+                </HBox>
+
+                <!-- Action Buttons -->
+                <HBox spacing="12">
+                    <Button text="⏰ Send Payment Reminders" styleClass="btn-primary" onAction="#onSendReminders"/>
+                    <Button text="🚨 Send Overdue Notices" styleClass="btn-secondary" onAction="#onSendOverdueNotices"/>
+                </HBox>
+
+                <!-- Filter Tabs -->
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <Button fx:id="filterPendingBtn" text="Pending Approval" 
+                            styleClass="filter-btn-active" onAction="#onFilterPending"/>
+                    <Button fx:id="filterActiveBtn" text="Active Loans" 
+                            styleClass="filter-btn" onAction="#onFilterActive"/>
+                    <Button fx:id="filterOverdueBtn" text="Overdue" 
+                            styleClass="filter-btn" onAction="#onFilterOverdue"/>
+                    <Button fx:id="filterAllBtn" text="All Loans" 
+                            styleClass="filter-btn" onAction="#onFilterAll"/>
+                </HBox>
+
+                <!-- Loans List -->
+                <VBox fx:id="loansBox" spacing="12"/>
+
+            </VBox>
+        </ScrollPane>
+    </center>
+
+    <!-- Bottom Navigation -->
+    <bottom>
+        <HBox styleClass="bottom-nav-bar" alignment="CENTER" maxWidth="Infinity">
+            <Button styleClass="nav-btn" onAction="#onHome" HBox.hgrow="ALWAYS">
+                <graphic>
+                    <VBox alignment="CENTER" spacing="3">
+                        <Label text="🏠" styleClass="nav-btn-icon"/>
+                        <Label text="Home" styleClass="nav-btn-label"/>
+                    </VBox>
+                </graphic>
+            </Button>
+            <Button styleClass="nav-btn" onAction="#onTransactions" HBox.hgrow="ALWAYS">
+                <graphic>
+                    <VBox alignment="CENTER" spacing="3">
+                        <Label text="📋" styleClass="nav-btn-icon"/>
+                        <Label text="History" styleClass="nav-btn-label"/>
+                    </VBox>
+                </graphic>
+            </Button>
+            <Button styleClass="nav-btn" onAction="#onAdminPanel" HBox.hgrow="ALWAYS">
+                <graphic>
+                    <VBox alignment="CENTER" spacing="3">
+                        <Label text="👑" styleClass="nav-btn-icon-active"/>
+                        <Label text="Admin" styleClass="nav-btn-label-active"/>
+                    </VBox>
+                </graphic>
+            </Button>
+            <Button styleClass="nav-btn" onAction="#onAccounts" HBox.hgrow="ALWAYS">
+                <graphic>
+                    <VBox alignment="CENTER" spacing="3">
+                        <Label text="🏦" styleClass="nav-btn-icon"/>
+                        <Label text="Accounts" styleClass="nav-btn-label"/>
+                    </VBox>
+                </graphic>
+            </Button>
+        </HBox>
+    </bottom>
+
+</BorderPane>

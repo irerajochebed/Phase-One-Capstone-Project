@@ -1,0 +1,584 @@
+/* ═══════════════════════════════════════════════════════════
+   IgirePay IRO — White Theme (MoMo-inspired)
+   Background : #FFFFFF  white
+   Header/Nav : #0D4F6C  dark teal
+   Accent     : #F5A623  IRO orange
+   Text       : #1A1A2A  near-black
+   Muted      : #6B7280  gray
+   Card bg    : #F5F7FA  light gray
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── Root ────────────────────────────────────────────────── */
+.root {
+    -fx-font-family: "Segoe UI", Arial, sans-serif;
+    -fx-background-color: #FFFFFF;
+}
+
+/* ── Scroll pane transparent ─────────────────────────────── */
+.scroll-pane {
+    -fx-background-color: transparent;
+    -fx-background: transparent;
+}
+.scroll-pane > .viewport {
+    -fx-background-color: transparent;
+}
+.scroll-pane > .scroll-bar:vertical {
+    -fx-background-color: transparent;
+    -fx-pref-width: 6px;
+}
+.scroll-pane > .scroll-bar:vertical .thumb {
+    -fx-background-color: #96a9c5;
+    -fx-background-radius: 3px;
+}
+
+/* ── Top header bar ──────────────────────────────────────── */
+.header-bar {
+    -fx-background-color: #0D4F6C;
+    -fx-padding: 14 20 14 20;
+    -fx-min-height: 56px;
+}
+
+.header-title {
+    -fx-text-fill: white;
+    -fx-font-size: 17px;
+    -fx-font-weight: bold;
+}
+
+.header-icon-btn {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-font-size: 18px;
+    -fx-cursor: hand;
+    -fx-padding: 4 8;
+}
+
+.header-icon-btn:hover {
+    -fx-text-fill: #F5A623;
+}
+
+/* ── Login screen ────────────────────────────────────────── */
+.login-bg {
+    -fx-background-color: #FFFFFF;
+}
+
+/* IRO logo circle */
+.iro-logo-circle {
+    -fx-background-color: #0D4F6C;
+    -fx-background-radius: 60;
+    -fx-min-width: 100px;
+    -fx-min-height: 100px;
+    -fx-max-width: 100px;
+    -fx-max-height: 100px;
+    -fx-effect: dropshadow(gaussian, rgba(13,79,108,0.3), 12, 0, 0, 4);
+}
+
+.app-title {
+    -fx-text-fill: #0D4F6C;
+    -fx-font-size: 26px;
+    -fx-font-weight: bold;
+}
+
+.app-subtitle {
+    -fx-text-fill: #6B7280;
+    -fx-font-size: 14px;
+}
+
+/* ── Form elements ───────────────────────────────────────── */
+.form-section-label {
+    -fx-text-fill: #6B7280;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+}
+
+.input-field {
+    -fx-background-color: #F5F7FA;
+    -fx-text-fill: #1A1A2A;
+    -fx-prompt-text-fill: #9CA3AF;
+    -fx-background-radius: 10;
+    -fx-border-color: #E5E7EB;
+    -fx-border-radius: 10;
+    -fx-border-width: 1.5;
+    -fx-padding: 12 16;
+    -fx-font-size: 15px;
+    -fx-pref-height: 50px;
+}
+
+.input-field:focused {
+    -fx-border-color: #0D4F6C;
+    -fx-background-color: white;
+    -fx-effect: dropshadow(gaussian, rgba(13,79,108,0.15), 6, 0, 0, 0);
+}
+
+.combo-input {
+    -fx-background-color: #F5F7FA;
+    -fx-text-fill: #1A1A2A;
+    -fx-background-radius: 10;
+    -fx-border-color: #E5E7EB;
+    -fx-border-radius: 10;
+    -fx-border-width: 1.5;
+    -fx-pref-height: 50px;
+    -fx-font-size: 14px;
+}
+
+.combo-input .list-cell {
+    -fx-text-fill: #1A1A2A;
+    -fx-background-color: white;
+    -fx-padding: 8 12;
+}
+
+.combo-input-popup .list-view {
+    -fx-background-color: white;
+    -fx-border-color: #E5E7EB;
+    -fx-border-radius: 8;
+}
+
+.combo-input-popup .list-cell:hover {
+    -fx-background-color: #F5F7FA;
+}
+
+/* PIN field — underline style like MoMo */
+.pin-input {
+    -fx-background-color: transparent;
+    -fx-text-fill: #1A1A2A;
+    -fx-prompt-text-fill: #9CA3AF;
+    -fx-border-color: transparent transparent #D1D5DB transparent;
+    -fx-border-width: 0 0 2 0;
+    -fx-padding: 10 4;
+    -fx-font-size: 20px;
+    -fx-pref-height: 50px;
+}
+
+.pin-input:focused {
+    -fx-border-color: transparent transparent #0D4F6C transparent;
+}
+
+.pin-label {
+    -fx-text-fill: #1A1A2A;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+}
+
+/* ── Buttons ─────────────────────────────────────────────── */
+.btn-main {
+    -fx-background-color: white;
+    -fx-text-fill: #0D4F6C;
+    -fx-font-weight: bold;
+    -fx-font-size: 15px;
+    -fx-background-radius: 30;
+    -fx-border-color: #0D4F6C;
+    -fx-border-radius: 30;
+    -fx-border-width: 2;
+    -fx-pref-height: 52px;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 4, 0, 0, 2);
+}
+
+.btn-main:hover {
+    -fx-background-color: #0D4F6C;
+    -fx-text-fill: white;
+}
+
+.btn-accent {
+    -fx-background-color: #F5A623;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 15px;
+    -fx-background-radius: 30;
+    -fx-pref-height: 52px;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(245,166,35,0.3), 8, 0, 0, 2);
+}
+
+.btn-accent:hover { -fx-background-color: #E09520; }
+
+.btn-teal {
+    -fx-background-color: #0D4F6C;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 15px;
+    -fx-background-radius: 30;
+    -fx-pref-height: 52px;
+    -fx-cursor: hand;
+}
+
+.btn-teal:hover { -fx-background-color: #0F5A7A; }
+
+.btn-link {
+    -fx-background-color: transparent;
+    -fx-text-fill: #0D4F6C;
+    -fx-font-size: 13px;
+    -fx-cursor: hand;
+    -fx-font-weight: bold;
+}
+
+.btn-link:hover { -fx-text-fill: #F5A623; }
+
+.btn-ghost {
+    -fx-background-color: transparent;
+    -fx-text-fill: #6B7280;
+    -fx-font-size: 13px;
+    -fx-cursor: hand;
+}
+
+/* ── Balance card (teal, like MoMo) ──────────────────────── */
+.balance-card {
+    -fx-background-color: #0D4F6C;
+    -fx-background-radius: 16;
+    -fx-padding: 24 28;
+    -fx-effect: dropshadow(gaussian, rgba(13,79,108,0.25), 12, 0, 0, 4);
+}
+
+.balance-phone {
+    -fx-text-fill: rgba(255,255,255,0.7);
+    -fx-font-size: 13px;
+}
+
+.balance-amount {
+    -fx-text-fill: white;
+    -fx-font-size: 36px;
+    -fx-font-weight: bold;
+}
+
+.balance-currency {
+    -fx-text-fill: #F5A623;
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+}
+
+.balance-view-btn {
+    -fx-background-color: transparent;
+    -fx-text-fill: rgba(255,255,255,0.8);
+    -fx-font-size: 13px;
+    -fx-cursor: hand;
+    -fx-border-color: transparent;
+}
+
+.balance-view-btn:hover { -fx-text-fill: white; }
+
+/* ── Service grid cards ──────────────────────────────────── */
+.service-tile {
+    -fx-background-color: white;
+    -fx-background-radius: 14;
+    -fx-border-color: #E5E7EB;
+    -fx-border-radius: 14;
+    -fx-border-width: 1;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.06), 6, 0, 0, 2);
+    -fx-pref-width: 130px;
+    -fx-pref-height: 100px;
+}
+
+.service-tile:hover {
+    -fx-border-color: #F5A623;
+    -fx-effect: dropshadow(gaussian, rgba(245,166,35,0.2), 8, 0, 0, 2);
+}
+
+.service-tile-icon {
+    -fx-text-fill: #0D4F6C;
+    -fx-font-size: 26px;
+}
+
+.service-tile-label {
+    -fx-text-fill: #1A1A2A;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+}
+
+/* ── Section header ──────────────────────────────────────── */
+.section-header {
+    -fx-text-fill: #6B7280;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+}
+
+/* ── Transaction cards (white rounded, like MoMo) ────────── */
+.tx-card {
+    -fx-background-color: white;
+    -fx-background-radius: 14;
+    -fx-border-color: #F3F4F6;
+    -fx-border-radius: 14;
+    -fx-border-width: 1;
+    -fx-padding: 16 18;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 4, 0, 0, 1);
+}
+
+.tx-name {
+    -fx-text-fill: #1A1A2A;
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+}
+
+.tx-date {
+    -fx-text-fill: #9CA3AF;
+    -fx-font-size: 11px;
+}
+
+.tx-type {
+    -fx-text-fill: #9CA3AF;
+    -fx-font-size: 11px;
+}
+
+.tx-amount-out {
+    -fx-text-fill: #EF4444;
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+}
+
+.tx-amount-in {
+    -fx-text-fill: #10B981;
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+}
+
+/* ── Send type selector ──────────────────────────────────── */
+.send-type-box {
+    -fx-background-color: white;
+    -fx-background-radius: 14;
+    -fx-border-color: #E5E7EB;
+    -fx-border-radius: 14;
+    -fx-border-width: 1;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 4, 0, 0, 1);
+}
+
+.send-type-btn {
+    -fx-background-color: transparent;
+    -fx-cursor: hand;
+    -fx-pref-height: 80px;
+    -fx-pref-width: 160px;
+}
+
+.send-type-btn:hover {
+    -fx-background-color: #F5F7FA;
+}
+
+.send-type-icon {
+    -fx-text-fill: #0D4F6C;
+    -fx-font-size: 26px;
+}
+
+.send-type-label {
+    -fx-text-fill: #1A1A2A;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+}
+
+.send-type-divider {
+    -fx-background-color: #F5A623;
+    -fx-pref-width: 2;
+    -fx-min-height: 60px;
+}
+
+/* ── Bottom navigation bar ───────────────────────────────── */
+.bottom-nav-bar {
+    -fx-background-color: white;
+    -fx-border-color: #E5E7EB transparent transparent transparent;
+    -fx-border-width: 1 0 0 0;
+    -fx-pref-height: 72px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 8, 0, 0, -2);
+}
+
+.nav-btn {
+    -fx-background-color: transparent;
+    -fx-cursor: hand;
+    -fx-pref-width: 80px;
+    -fx-pref-height: 72px;
+    -fx-alignment: CENTER;
+}
+
+.nav-btn-icon {
+    -fx-text-fill: #9CA3AF;
+    -fx-font-size: 20px;
+}
+
+.nav-btn-label {
+    -fx-text-fill: #9CA3AF;
+    -fx-font-size: 10px;
+}
+
+.nav-btn-icon-active {
+    -fx-text-fill: #0D4F6C;
+    -fx-font-size: 20px;
+}
+
+.nav-btn-label-active {
+    -fx-text-fill: #0D4F6C;
+    -fx-font-size: 10px;
+    -fx-font-weight: bold;
+}
+
+/* IRO Pay center button */
+.iro-pay-btn {
+    -fx-background-color: #F5A623;
+    -fx-background-radius: 36;
+    -fx-min-width: 62px;
+    -fx-min-height: 62px;
+    -fx-max-width: 62px;
+    -fx-max-height: 62px;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(245,166,35,0.5), 12, 0, 0, 0);
+}
+
+/* ── Status messages ─────────────────────────────────────── */
+.msg-error {
+    -fx-text-fill: #EF4444;
+    -fx-font-size: 13px;
+    -fx-wrap-text: true;
+}
+
+.msg-success {
+    -fx-text-fill: #10B981;
+    -fx-font-size: 13px;
+    -fx-wrap-text: true;
+}
+
+/* ── Table ───────────────────────────────────────────────── */
+.table-view {
+    -fx-background-color: white;
+    -fx-border-color: #E5E7EB;
+    -fx-border-radius: 12;
+    -fx-background-radius: 12;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: #F5F7FA;
+    -fx-background-radius: 12 12 0 0;
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: #0D4F6C;
+    -fx-font-weight: bold;
+    -fx-font-size: 12px;
+}
+
+.table-row-cell {
+    -fx-background-color: white;
+    -fx-border-color: transparent transparent #F3F4F6 transparent;
+    -fx-text-fill: #1A1A2A;
+}
+
+.table-row-cell:odd { -fx-background-color: #FAFAFA; }
+.table-row-cell:selected { -fx-background-color: #EFF6FF; }
+.table-view .table-cell { -fx-text-fill: #374151; -fx-font-size: 13px; -fx-padding: 10 12; }
+
+/* ── Account menu panel ──────────────────────────────────── */
+.account-panel-bg {
+    -fx-background-color: white;
+}
+
+.account-avatar {
+    -fx-background-color: #F5A623;
+    -fx-background-radius: 32;
+    -fx-min-width: 56px;
+    -fx-min-height: 56px;
+    -fx-max-width: 56px;
+    -fx-max-height: 56px;
+}
+
+.account-name {
+    -fx-text-fill: #1A1A2A;
+    -fx-font-size: 17px;
+    -fx-font-weight: bold;
+}
+
+.account-phone {
+    -fx-text-fill: #6B7280;
+    -fx-font-size: 13px;
+}
+
+.menu-row {
+    -fx-background-color: #0D4F6C;
+    -fx-background-radius: 12;
+    -fx-padding: 16 20;
+    -fx-cursor: hand;
+    -fx-pref-height: 68px;
+}
+
+.menu-row:hover { -fx-background-color: #0F5A7A; }
+
+.menu-row-title {
+    -fx-text-fill: white;
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+}
+
+.menu-row-sub {
+    -fx-text-fill: rgba(255,255,255,0.65);
+    -fx-font-size: 12px;
+}
+
+.menu-row-arrow {
+    -fx-text-fill: #F5A623;
+    -fx-font-size: 18px;
+}
+
+.signout-btn {
+    -fx-background-color: transparent;
+    -fx-text-fill: #F5A623;
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+}
+
+/* ── Separator ───────────────────────────────────────────── */
+.separator .line {
+    -fx-border-color: #E5E7EB;
+}
+
+/* ── Page title (white content area) ────────────────────── */
+.page-title {
+    -fx-text-fill: #1A1A2A;
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+}
+
+.page-subtitle {
+    -fx-text-fill: #6B7280;
+    -fx-font-size: 13px;
+}
+
+/* ── Filter buttons ──────────────────────────────────────── */
+.filter-btn {
+    -fx-background-color: #F3F4F6;
+    -fx-text-fill: #6B7280;
+    -fx-padding: 10 20;
+    -fx-background-radius: 8;
+    -fx-cursor: hand;
+    -fx-font-size: 14px;
+    -fx-font-weight: 600;
+    -fx-border-width: 0;
+}
+
+.filter-btn:hover {
+    -fx-background-color: #E5E7EB;
+}
+
+.filter-btn-active {
+    -fx-background-color: #3B82F6;
+    -fx-text-fill: white;
+    -fx-padding: 10 20;
+    -fx-background-radius: 8;
+    -fx-cursor: hand;
+    -fx-font-size: 14px;
+    -fx-font-weight: 600;
+    -fx-border-width: 0;
+}
+
+.filter-btn-active:hover {
+    -fx-background-color: #2563EB;
+}
+
+/* ── Secondary button ────────────────────────────────────── */
+.btn-secondary {
+    -fx-background-color: #6B7280;
+    -fx-text-fill: white;
+    -fx-padding: 10 20;
+    -fx-background-radius: 8;
+    -fx-cursor: hand;
+    -fx-font-size: 14px;
+    -fx-font-weight: 600;
+    -fx-border-width: 0;
+}
+
+.btn-secondary:hover {
+    -fx-background-color: #4B5563;
+}

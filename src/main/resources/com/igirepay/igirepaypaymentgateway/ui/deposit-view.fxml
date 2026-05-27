@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.igirepay.igirepaypaymentgateway.ui.controller.DepositController"
+            style="-fx-background-color:white;"
+            maxWidth="Infinity" maxHeight="Infinity">
+    <top>
+        <HBox styleClass="header-bar" alignment="CENTER_LEFT" spacing="12">
+            <Button text="←" styleClass="header-icon-btn" onAction="#onDashboard"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Label text="Deposit Money" styleClass="header-title"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Button text="✕" styleClass="header-icon-btn" onAction="#onDashboard"/>
+        </HBox>
+    </top>
+    <center>
+        <ScrollPane styleClass="scroll-pane" fitToWidth="true" hbarPolicy="NEVER">
+            <VBox spacing="16" style="-fx-padding: 28 24 20 24; -fx-background-color:white;">
+                <Label text="Add funds to your account" styleClass="page-subtitle"/>
+                <Label text="TO ACCOUNT" styleClass="form-section-label"/>
+                <ComboBox fx:id="accountCombo" maxWidth="Infinity" styleClass="combo-input"/>
+                <Label text="AMOUNT (RWF)" styleClass="form-section-label"/>
+                <TextField fx:id="amountField" promptText="e.g. 10 000"
+                           styleClass="input-field" maxWidth="Infinity"/>
+                <Label text="DESCRIPTION (optional)" styleClass="form-section-label"/>
+                <TextField fx:id="descField" promptText="e.g. Top-up from bank"
+                           styleClass="input-field" maxWidth="Infinity"/>
+                <Label fx:id="statusLabel" styleClass="msg-error"
+                       wrapText="true" maxWidth="Infinity" minHeight="20"/>
+                <Button text="DEPOSIT" styleClass="btn-teal"
+                        maxWidth="Infinity" onAction="#onDoDeposit"/>
+                <Region prefHeight="20"/>
+            </VBox>
+        </ScrollPane>
+    </center>
+    <bottom>
+        <HBox styleClass="bottom-nav-bar" alignment="CENTER">
+            <Button styleClass="nav-btn" onAction="#onDashboard" HBox.hgrow="ALWAYS">
+                <graphic><VBox alignment="CENTER" spacing="3"><Label text="🏠" styleClass="nav-btn-icon"/><Label text="Home" styleClass="nav-btn-label"/></VBox></graphic>
+            </Button>
+            <Button styleClass="nav-btn" onAction="#onSendMoney" HBox.hgrow="ALWAYS">
+                <graphic><VBox alignment="CENTER" spacing="3"><Label text="✈" styleClass="nav-btn-icon"/><Label text="Send" styleClass="nav-btn-label"/></VBox></graphic>
+            </Button>
+            <StackPane HBox.hgrow="ALWAYS" alignment="CENTER">
+                <Circle radius="31" fill="#F5A623" style="-fx-effect: dropshadow(gaussian,rgba(245,166,35,0.5),12,0,0,0);"/>
+                <VBox alignment="CENTER" spacing="1" onMouseClicked="#onSendMoney" style="-fx-cursor:hand;">
+                    <Label text="IRO" style="-fx-text-fill:#0D4F6C; -fx-font-size:12px; -fx-font-weight:bold;"/>
+                    <Label text="Pay" style="-fx-text-fill:#0D4F6C; -fx-font-size:10px;"/>
+                </VBox>
+            </StackPane>
+            <Button styleClass="nav-btn" onAction="#onTransactions" HBox.hgrow="ALWAYS">
+                <graphic><VBox alignment="CENTER" spacing="3"><Label text="📋" styleClass="nav-btn-icon"/><Label text="History" styleClass="nav-btn-label"/></VBox></graphic>
+            </Button>
+            <Button styleClass="nav-btn" onAction="#onShowAccount" HBox.hgrow="ALWAYS">
+                <graphic><VBox alignment="CENTER" spacing="3"><Label text="⚙" styleClass="nav-btn-icon"/><Label text="Settings" styleClass="nav-btn-label"/></VBox></graphic>
+            </Button>
+        </HBox>
+    </bottom>
+</BorderPane>

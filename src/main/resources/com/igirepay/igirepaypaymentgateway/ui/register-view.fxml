@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.shape.*?>
+
+<StackPane xmlns:fx="http://javafx.com/fxml"
+           fx:controller="com.igirepay.igirepaypaymentgateway.ui.controller.RegisterController"
+           style="-fx-background-color: linear-gradient(to bottom, #0D4F6C, #1A7A9E);">
+
+    <ScrollPane fitToWidth="true" hbarPolicy="NEVER" vbarPolicy="AS_NEEDED"
+                style="-fx-background:transparent; -fx-background-color:transparent;">
+
+        <VBox alignment="CENTER" fillWidth="true"
+              style="-fx-padding: 32 20 32 20;">
+
+            <!-- Registration Card -->
+            <VBox alignment="CENTER" spacing="0"
+                  maxWidth="480" minWidth="360"
+                  style="-fx-background-color: white; -fx-background-radius: 20; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 20, 0, 0, 5); -fx-padding: 40 36 40 36;">
+
+                <!-- Logo Section -->
+                <VBox alignment="CENTER" spacing="8">
+                    <!-- Igire Rwanda Logo -->
+                    <ImageView fitWidth="100" fitHeight="100" preserveRatio="true">
+                        <image>
+                            <Image url="file:///C:/Users/HP/Downloads/Igire_Rwanda_Logo.png"/>
+                        </image>
+                    </ImageView>
+                    
+                    <Label text="Create Your Account" 
+                           style="-fx-text-fill: #0D4F6C; -fx-font-size: 24px; -fx-font-weight: bold;"/>
+                    <Label text="Join thousands of users managing their money securely" 
+                           style="-fx-text-fill: #6B7280; -fx-font-size: 13px;"
+                           wrapText="true" textAlignment="CENTER" maxWidth="360"/>
+                </VBox>
+
+                <Region prefHeight="32"/>
+
+                <!-- Form Fields with Icons -->
+                <VBox spacing="18" maxWidth="Infinity">
+                    
+                    <!-- Full Name Field -->
+                    <VBox spacing="6">
+                        <Label text="👤  Full Name" 
+                               style="-fx-text-fill: #374151; -fx-font-size: 13px; -fx-font-weight: 600;"/>
+                        <TextField fx:id="nameField" promptText="Enter your full name"
+                                   style="-fx-background-color: #F3F4F6; -fx-background-radius: 10; -fx-border-color: transparent; -fx-border-radius: 10; -fx-padding: 14 16; -fx-font-size: 14px; -fx-text-fill: #1F2937;"
+                                   maxWidth="Infinity"/>
+                    </VBox>
+
+                    <!-- Email Field -->
+                    <VBox spacing="6">
+                        <Label text="📧  Email Address" 
+                               style="-fx-text-fill: #374151; -fx-font-size: 13px; -fx-font-weight: 600;"/>
+                        <TextField fx:id="emailField" promptText="example@email.com"
+                                   style="-fx-background-color: #F3F4F6; -fx-background-radius: 10; -fx-border-color: transparent; -fx-border-radius: 10; -fx-padding: 14 16; -fx-font-size: 14px; -fx-text-fill: #1F2937;"
+                                   maxWidth="Infinity"/>
+                        <Label text="Must contain @ and ." 
+                               style="-fx-text-fill: #9CA3AF; -fx-font-size: 11px;"/>
+                    </VBox>
+
+                    <!-- Phone Number Field -->
+                    <VBox spacing="6">
+                        <Label text="📱  Phone Number" 
+                               style="-fx-text-fill: #374151; -fx-font-size: 13px; -fx-font-weight: 600;"/>
+                        <TextField fx:id="phoneField" promptText="078XXXXXXX or 079XXXXXXX"
+                                   style="-fx-background-color: #F3F4F6; -fx-background-radius: 10; -fx-border-color: transparent; -fx-border-radius: 10; -fx-padding: 14 16; -fx-font-size: 14px; -fx-text-fill: #1F2937;"
+                                   maxWidth="Infinity"/>
+                        <Label text="10 digits starting with 078 or 079" 
+                               style="-fx-text-fill: #9CA3AF; -fx-font-size: 11px;"/>
+                    </VBox>
+
+                    <!-- PIN Field -->
+                    <VBox spacing="6">
+                        <Label text="🔒  Create 4-Digit PIN" 
+                               style="-fx-text-fill: #374151; -fx-font-size: 13px; -fx-font-weight: 600;"/>
+                        <PasswordField fx:id="pinField" promptText="Enter 4 digits"
+                                       style="-fx-background-color: #F3F4F6; -fx-background-radius: 10; -fx-border-color: transparent; -fx-border-radius: 10; -fx-padding: 14 16; -fx-font-size: 14px; -fx-text-fill: #1F2937;"
+                                       maxWidth="Infinity"/>
+                    </VBox>
+
+                    <!-- Confirm PIN Field -->
+                    <VBox spacing="6">
+                        <Label text="🔒  Confirm PIN" 
+                               style="-fx-text-fill: #374151; -fx-font-size: 13px; -fx-font-weight: 600;"/>
+                        <PasswordField fx:id="confirmPinField" promptText="Re-enter your PIN"
+                                       style="-fx-background-color: #F3F4F6; -fx-background-radius: 10; -fx-border-color: transparent; -fx-border-radius: 10; -fx-padding: 14 16; -fx-font-size: 14px; -fx-text-fill: #1F2937;"
+                                       maxWidth="Infinity"/>
+                    </VBox>
+                </VBox>
+
+                <Region prefHeight="24"/>
+
+                <!-- Create Account Button -->
+                <Button text="CREATE ACCOUNT" 
+                        style="-fx-background-color: #F5A623; -fx-text-fill: white; -fx-font-size: 15px; -fx-font-weight: bold; -fx-background-radius: 12; -fx-padding: 16 0; -fx-cursor: hand; -fx-effect: dropshadow(gaussian, rgba(245,166,35,0.4), 12, 0, 0, 4);"
+                        maxWidth="Infinity" onAction="#onRegister"/>
+
+                <Region prefHeight="20"/>
+
+                <!-- Login Link -->
+                <HBox alignment="CENTER" spacing="6">
+                    <Label text="Already have an account?" 
+                           style="-fx-text-fill: #6B7280; -fx-font-size: 13px;"/>
+                    <Button text="Login here" 
+                            style="-fx-background-color: transparent; -fx-text-fill: #F5A623; -fx-font-size: 13px; -fx-font-weight: bold; -fx-underline: true; -fx-cursor: hand; -fx-padding: 0;"
+                            onAction="#onGoLogin"/>
+                </HBox>
+
+                <Region prefHeight="16"/>
+
+                <!-- Security Note -->
+                <HBox alignment="CENTER" spacing="8" 
+                      style="-fx-background-color: #FEF3C7; -fx-background-radius: 10; -fx-padding: 12 16;">
+                    <Label text="🔐" style="-fx-font-size: 16px;"/>
+                    <Label text="Your information is encrypted and secure" 
+                           style="-fx-text-fill: #92400E; -fx-font-size: 11px; -fx-font-weight: 600;"
+                           wrapText="true" maxWidth="300"/>
+                </HBox>
+            </VBox>
+
+            <Region prefHeight="32"/>
+        </VBox>
+    </ScrollPane>
+</StackPane>

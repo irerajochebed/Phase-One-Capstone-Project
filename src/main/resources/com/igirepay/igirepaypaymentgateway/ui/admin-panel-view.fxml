@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.igirepay.igirepaypaymentgateway.ui.controller.AdminPanelController"
+            style="-fx-background-color:white;"
+            maxWidth="Infinity" maxHeight="Infinity">
+
+    <!-- Header -->
+    <top>
+        <HBox styleClass="header-bar" alignment="CENTER_LEFT" spacing="12">
+            <Button text="←" styleClass="header-icon-btn" onAction="#onBack"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Label text="Admin Panel" styleClass="header-title"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Button text="🔄" styleClass="header-icon-btn" onAction="#onRefresh"/>
+        </HBox>
+    </top>
+
+    <center>
+        <ScrollPane styleClass="scroll-pane" fitToWidth="true" hbarPolicy="NEVER">
+            <VBox spacing="20" style="-fx-padding: 24 20 20 20; -fx-background-color:white;">
+
+                <!-- Admin Info Card -->
+                <VBox style="-fx-background-color: linear-gradient(to right, #F5A623, #F59E0B); -fx-background-radius: 15; -fx-padding: 20; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);">
+                    <Label text="👑 Administrator Dashboard" 
+                           style="-fx-text-fill: white; -fx-font-size: 20px; -fx-font-weight: bold;"/>
+                    <Label fx:id="adminNameLabel" text="Admin Name" 
+                           style="-fx-text-fill: rgba(255,255,255,0.9); -fx-font-size: 14px;"/>
+                    <Region prefHeight="10"/>
+                    <HBox spacing="20">
+                        <VBox spacing="4">
+                            <Label text="Total Users" style="-fx-text-fill: rgba(255,255,255,0.8); -fx-font-size: 12px;"/>
+                            <Label fx:id="totalUsersLabel" text="0" 
+                                   style="-fx-text-fill: white; -fx-font-size: 24px; -fx-font-weight: bold;"/>
+                        </VBox>
+                        <VBox spacing="4">
+                            <Label text="Locked Accounts" style="-fx-text-fill: rgba(255,255,255,0.8); -fx-font-size: 12px;"/>
+                            <Label fx:id="lockedAccountsLabel" text="0" 
+                                   style="-fx-text-fill: white; -fx-font-size: 24px; -fx-font-weight: bold;"/>
+                        </VBox>
+                        <VBox spacing="4">
+                            <Label text="Admins" style="-fx-text-fill: rgba(255,255,255,0.8); -fx-font-size: 12px;"/>
+                            <Label fx:id="adminCountLabel" text="0" 
+                                   style="-fx-text-fill: white; -fx-font-size: 24px; -fx-font-weight: bold;"/>
+                        </VBox>
+                        <VBox spacing="4">
+                            <Label text="Pending Disputes" style="-fx-text-fill: rgba(255,255,255,0.8); -fx-font-size: 12px;"/>
+                            <Label fx:id="pendingDisputesLabel" text="0" 
+                                   style="-fx-text-fill: white; -fx-font-size: 24px; -fx-font-weight: bold;"/>
+                        </VBox>
+                        <VBox spacing="4">
+                            <Label text="Inactive Accounts" style="-fx-text-fill: rgba(255,255,255,0.8); -fx-font-size: 12px;"/>
+                            <Label fx:id="inactiveAccountsLabel" text="0" 
+                                   style="-fx-text-fill: white; -fx-font-size: 24px; -fx-font-weight: bold;"/>
+                        </VBox>
+                    </HBox>
+                </VBox>
+
+                <!-- Quick Actions -->
+                <HBox spacing="12">
+                    <Button text="💰 Manage Loans" 
+                            style="-fx-background-color: #10B981; -fx-text-fill: white; -fx-padding: 12 24; -fx-background-radius: 10; -fx-font-size: 14px; -fx-font-weight: bold; -fx-cursor: hand;"
+                            onAction="#onManageLoans" HBox.hgrow="ALWAYS"/>
+                    <Button text="📊 View Reports" 
+                            style="-fx-background-color: #3B82F6; -fx-text-fill: white; -fx-padding: 12 24; -fx-background-radius: 10; -fx-font-size: 14px; -fx-font-weight: bold; -fx-cursor: hand;"
+                            HBox.hgrow="ALWAYS"/>
+                </HBox>
+
+                <!-- Search Bar -->
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <TextField fx:id="searchField" promptText="🔍 Search by name, email, or phone..."
+                               style="-fx-background-color: #F3F4F6; -fx-background-radius: 10; -fx-padding: 12 16; -fx-font-size: 14px;"
+                               HBox.hgrow="ALWAYS"/>
+                    <Button text="Search" styleClass="btn-teal" onAction="#onSearch"/>
+                    <Button text="Show All" styleClass="btn-secondary" onAction="#onShowAll"/>
+                </HBox>
+
+                <!-- Filter Options -->
+                <HBox spacing="10">
+                    <Button text="All Users" styleClass="filter-btn" onAction="#onFilterAll"/>
+                    <Button text="Locked Only" styleClass="filter-btn" onAction="#onFilterLocked"/>
+                    <Button text="Admins Only" styleClass="filter-btn" onAction="#onFilterAdmins"/>
+                </HBox>
+
+                <!-- Customer List -->
+                <Label text="CUSTOMER MANAGEMENT" styleClass="section-header"/>
+                <VBox fx:id="customerListBox" spacing="12"/>
+
+                <Region prefHeight="20"/>
+            </VBox>
+        </ScrollPane>
+    </center>
+
+    <!-- Bottom nav -->
+    <bottom>
+        <HBox styleClass="bottom-nav-bar" alignment="CENTER">
+            <Button styleClass="nav-btn" onAction="#onHome" HBox.hgrow="ALWAYS">
+                <graphic><VBox alignment="CENTER" spacing="3">
+                    <Label text="🏠" styleClass="nav-btn-icon"/>
+                    <Label text="Home" styleClass="nav-btn-label"/>
+                </VBox></graphic>
+            </Button>
+            <Button styleClass="nav-btn" onAction="#onTransactions" HBox.hgrow="ALWAYS">
+                <graphic><VBox alignment="CENTER" spacing="3">
+                    <Label text="📋" styleClass="nav-btn-icon"/>
+                    <Label text="History" styleClass="nav-btn-label"/>
+                </VBox></graphic>
+            </Button>
+            <StackPane HBox.hgrow="ALWAYS" alignment="CENTER">
+                <Circle radius="31" fill="#F5A623"
+                        style="-fx-effect: dropshadow(gaussian,rgba(245,166,35,0.5),12,0,0,0);"/>
+                <VBox alignment="CENTER" spacing="1"
+                      onMouseClicked="#onAdminPanel" style="-fx-cursor:hand;">
+                    <Label text="👑" style="-fx-text-fill:#0D4F6C; -fx-font-size:20px;"/>
+                    <Label text="Admin"  style="-fx-text-fill:#0D4F6C; -fx-font-size:10px; -fx-font-weight:bold;"/>
+                </VBox>
+            </StackPane>
+            <Button styleClass="nav-btn" onAction="#onAccounts" HBox.hgrow="ALWAYS">
+                <graphic><VBox alignment="CENTER" spacing="3">
+                    <Label text="💳" styleClass="nav-btn-icon"/>
+                    <Label text="Accounts" styleClass="nav-btn-label"/>
+                </VBox></graphic>
+            </Button>
+            <Button styleClass="nav-btn" onAction="#onShowAccount" HBox.hgrow="ALWAYS">
+                <graphic><VBox alignment="CENTER" spacing="3">
+                    <Label text="⚙" styleClass="nav-btn-icon"/>
+                    <Label text="Settings" styleClass="nav-btn-label"/>
+                </VBox></graphic>
+            </Button>
+        </HBox>
+    </bottom>
+</BorderPane>

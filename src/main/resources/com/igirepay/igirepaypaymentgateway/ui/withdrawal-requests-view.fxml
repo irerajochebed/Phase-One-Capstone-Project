@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.igirepay.igirepaypaymentgateway.ui.controller.WithdrawalRequestsController"
+      style="-fx-background-color:white; -fx-padding:16 20 16 20;"
+      spacing="12" maxWidth="Infinity" maxHeight="Infinity">
+
+    <Label text="Withdrawal Requests" styleClass="page-title"/>
+    <Label text="Manage your pending savings account withdrawal requests" styleClass="page-subtitle"/>
+
+    <!-- Filter tabs -->
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Button fx:id="allBtn" text="All Requests" styleClass="btn-link" onAction="#onShowAll"/>
+        <Button fx:id="pendingBtn" text="Pending" styleClass="btn-link" onAction="#onShowPending"/>
+        <Button fx:id="availableBtn" text="Ready to Process" styleClass="btn-primary" onAction="#onShowAvailable"/>
+    </HBox>
+
+    <Label fx:id="countLabel" styleClass="page-subtitle"/>
+
+    <!-- Requests list -->
+    <ScrollPane VBox.vgrow="ALWAYS" fitToWidth="true" style="-fx-background-color:transparent;">
+        <VBox fx:id="requestsContainer" spacing="12" style="-fx-padding:4;"/>
+    </ScrollPane>
+
+    <!-- Empty state -->
+    <VBox fx:id="emptyState" alignment="CENTER" spacing="10" VBox.vgrow="ALWAYS" visible="false">
+        <Label text="📋" style="-fx-font-size:48px;"/>
+        <Label text="No withdrawal requests" styleClass="page-subtitle"/>
+        <Label text="Withdrawal requests for savings accounts younger than 1 month will appear here" 
+               style="-fx-text-fill:#666; -fx-font-size:12px;"/>
+    </VBox>
+</VBox>

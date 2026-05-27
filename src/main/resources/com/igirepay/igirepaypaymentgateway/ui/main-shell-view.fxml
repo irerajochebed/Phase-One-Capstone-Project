@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+
+<!--
+  MainShell — the persistent outer frame.
+  The top header and bottom nav NEVER change.
+  Only the center StackPane (fx:id="contentArea") is swapped per screen.
+-->
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.igirepay.igirepaypaymentgateway.ui.controller.MainShellController"
+            style="-fx-background-color:white;"
+            maxWidth="Infinity" maxHeight="Infinity">
+
+    <!-- ══ PERSISTENT TOP HEADER ══ -->
+    <top>
+        <HBox styleClass="header-bar" alignment="CENTER">
+            <Button text="👤" styleClass="header-icon-btn" onAction="#onAccount"/>
+            <Label text="Account" style="-fx-text-fill:rgba(255,255,255,0.75); -fx-font-size:11px;"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <!-- IRO Logo -->
+            <StackPane>
+                <Circle radius="22" fill="rgba(255,255,255,0.12)"/>
+                <Polygon points="-11,11, 0,-9, 11,11" fill="#2D6A4F"/>
+                <Polygon points="-5,-7, 5,-7, 8,-1, 0,4, -8,-1"
+                         fill="#F5A623" translateY="-4"/>
+            </StackPane>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Label text="Notifications" style="-fx-text-fill:rgba(255,255,255,0.75); -fx-font-size:11px;"/>
+            <StackPane>
+                <Button fx:id="notificationBtn" text="🔔" styleClass="header-icon-btn" onAction="#onNotifications"/>
+                <Label fx:id="notificationBadge" text="0" managed="false" visible="false"
+                       style="-fx-background-color: #EF4444; -fx-text-fill: white; -fx-background-radius: 10; -fx-padding: 2 6; -fx-font-size: 10px; -fx-font-weight: bold;"
+                       StackPane.alignment="TOP_RIGHT" translateX="-5" translateY="5"/>
+            </StackPane>
+        </HBox>
+    </top>
+
+    <!-- ══ SWAPPABLE CENTER CONTENT ══ -->
+    <center>
+        <!-- This StackPane is filled by MainShellController.loadContent() -->
+        <StackPane fx:id="contentArea"
+                   style="-fx-background-color:white;"
+                   maxWidth="Infinity" maxHeight="Infinity"/>
+    </center>
+
+    <!-- ══ PERSISTENT BOTTOM NAV ══ -->
+    <bottom>
+        <HBox styleClass="bottom-nav-bar" alignment="CENTER"
+              maxWidth="Infinity">
+
+            <!-- Home -->
+            <Button fx:id="navHome" styleClass="nav-btn"
+                    onAction="#onNavHome" HBox.hgrow="ALWAYS">
+                <graphic>
+                    <VBox alignment="CENTER" spacing="3">
+                        <Label fx:id="navHomeIcon"  text="🏠" styleClass="nav-btn-icon-active"/>
+                        <Label fx:id="navHomeLabel" text="Home" styleClass="nav-btn-label-active"/>
+                    </VBox>
+                </graphic>
+            </Button>
+
+            <!-- Send -->
+            <Button fx:id="navSend" styleClass="nav-btn"
+                    onAction="#onNavSend" HBox.hgrow="ALWAYS">
+                <graphic>
+                    <VBox alignment="CENTER" spacing="3">
+                        <Label fx:id="navSendIcon"  text="✈" styleClass="nav-btn-icon"/>
+                        <Label fx:id="navSendLabel" text="Send" styleClass="nav-btn-label"/>
+                    </VBox>
+                </graphic>
+            </Button>
+
+            <!-- IRO Pay centre button -->
+            <StackPane HBox.hgrow="ALWAYS" alignment="CENTER"
+                       style="-fx-cursor:hand;" onMouseClicked="#onNavSend">
+                <Circle radius="32" fill="#F5A623"
+                        style="-fx-effect:dropshadow(gaussian,rgba(245,166,35,0.55),14,0,0,0);"/>
+                <VBox alignment="CENTER" spacing="1">
+                    <Label text="IRO"
+                           style="-fx-text-fill:#0D4F6C; -fx-font-size:12px; -fx-font-weight:bold;"/>
+                    <Label text="Pay"
+                           style="-fx-text-fill:#0D4F6C; -fx-font-size:10px;"/>
+                </VBox>
+            </StackPane>
+
+            <!-- History -->
+            <Button fx:id="navHistory" styleClass="nav-btn"
+                    onAction="#onNavHistory" HBox.hgrow="ALWAYS">
+                <graphic>
+                    <VBox alignment="CENTER" spacing="3">
+                        <Label fx:id="navHistoryIcon"  text="📋" styleClass="nav-btn-icon"/>
+                        <Label fx:id="navHistoryLabel" text="History" styleClass="nav-btn-label"/>
+                    </VBox>
+                </graphic>
+            </Button>
+
+            <!-- Settings -->
+            <Button fx:id="navSettings" styleClass="nav-btn"
+                    onAction="#onNavSettings" HBox.hgrow="ALWAYS">
+                <graphic>
+                    <VBox alignment="CENTER" spacing="3">
+                        <Label fx:id="navSettingsIcon"  text="⚙" styleClass="nav-btn-icon"/>
+                        <Label fx:id="navSettingsLabel" text="Settings" styleClass="nav-btn-label"/>
+                    </VBox>
+                </graphic>
+            </Button>
+
+        </HBox>
+    </bottom>
+
+</BorderPane>

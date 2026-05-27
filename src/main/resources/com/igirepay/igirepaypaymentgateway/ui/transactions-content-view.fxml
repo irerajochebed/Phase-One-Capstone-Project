@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.igirepay.igirepaypaymentgateway.ui.controller.TransactionsController"
+      style="-fx-background-color:white; -fx-padding:16 20 16 20;"
+      spacing="12" maxWidth="Infinity" maxHeight="Infinity">
+
+    <Label text="Transaction History" styleClass="page-title"/>
+
+    <!-- Filter bar -->
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <ComboBox fx:id="accountFilterCombo" promptText="All Accounts"
+                  styleClass="combo-input" prefWidth="180"/>
+        <ComboBox fx:id="typeFilterCombo" promptText="All Types"
+                  styleClass="combo-input" prefWidth="140"/>
+        <TextField fx:id="keywordField" promptText="Search..."
+                   styleClass="input-field" HBox.hgrow="ALWAYS"/>
+        <Button text="🔍" styleClass="btn-teal"
+                style="-fx-pref-height:46px; -fx-pref-width:46px; -fx-background-radius:10;"
+                onAction="#onSearch"/>
+        <Button text="Clear" styleClass="btn-link" onAction="#onClear"/>
+    </HBox>
+
+    <!-- Export bar -->
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Label fx:id="countLabel" styleClass="page-subtitle" HBox.hgrow="ALWAYS"/>
+        <Button text="📥 Export to CSV" styleClass="btn-primary" onAction="#onExportCsv"
+                style="-fx-pref-height:40px;"/>
+    </HBox>
+
+    <TableView fx:id="txTable" VBox.vgrow="ALWAYS" styleClass="table-view"
+               maxWidth="Infinity">
+        <columns>
+            <TableColumn fx:id="colDate"   text="Date"         prefWidth="120"/>
+            <TableColumn fx:id="colRef"    text="Reference"    prefWidth="120"/>
+            <TableColumn fx:id="colType"   text="Type"         prefWidth="100"/>
+            <TableColumn fx:id="colAmount" text="Amount (RWF)" prefWidth="110"/>
+            <TableColumn fx:id="colDesc"   text="Description"  prefWidth="160"/>
+            <TableColumn fx:id="colStatus" text="Status"       prefWidth="80"/>
+        </columns>
+        <placeholder>
+            <Label text="No transactions found." styleClass="page-subtitle"/>
+        </placeholder>
+    </TableView>
+</VBox>
