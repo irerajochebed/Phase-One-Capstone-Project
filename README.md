@@ -2,31 +2,6 @@
 
 A comprehensive digital wallet and payment gateway system built with Java, JavaFX, and PostgreSQL. IgirePay provides a complete financial management platform with support for multiple account types, loans, disputes, and administrative controls.
 
-![Java](https://img.shields.io/badge/Java-17-orange?style=flat&logo=java)
-![JavaFX](https://img.shields.io/badge/JavaFX-17.0.6-blue?style=flat)
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-15+-blue?style=flat&logo=postgresql)
-![Maven](https://img.shields.io/badge/Maven-3.8+-red?style=flat&logo=apache-maven)
-![License](https://img.shields.io/badge/License-MIT-green?style=flat)
-
----
-
-## 📋 Table of Contents
-
-- [Features](#-features)
-- [Architecture](#-architecture)
-- [Prerequisites](#-prerequisites)
-- [Installation](#-installation)
-- [Running the Application](#-running-the-application)
-- [Project Structure](#-project-structure)
-- [Database Schema](#-database-schema)
-- [User Roles](#-user-roles)
-- [Key Concepts](#-key-concepts)
-- [API Documentation](#-api-documentation)
-- [Screenshots](#-screenshots)
-- [Contributing](#-contributing)
-- [License](#-license)
-
----
 
 ## ✨ Features
 
@@ -581,51 +556,7 @@ Registers a new customer.
 
 ---
 
-## 🖼️ Screenshots
 
-### Login Screen
-![Login](docs/screenshots/login.png)
-
-### Dashboard
-![Dashboard](docs/screenshots/dashboard.png)
-
-### Transactions
-![Transactions](docs/screenshots/transactions.png)
-
-### Admin Panel
-![Admin Panel](docs/screenshots/admin-panel.png)
-
----
-
-## 🤝 Contributing
-
-Contributions are welcome! Please follow these steps:
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-### Code Style
-- Follow Java naming conventions
-- Use meaningful variable and method names
-- Add comments for complex logic only
-- Write clean, self-documenting code
-
----
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
-
-## 👨‍💻 Authors
-
-- **Your Name** - *Initial work* - [YourGitHub](https://github.com/yourusername)
-
----
 
 ## 🙏 Acknowledgments
 
