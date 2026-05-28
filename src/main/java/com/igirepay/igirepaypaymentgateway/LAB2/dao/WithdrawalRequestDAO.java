@@ -31,7 +31,7 @@ public class WithdrawalRequestDAO {
             if (rs.next()) {
                 int newId = rs.getInt("id");
                 request.setId(newId);
-                System.out.println("[WithdrawalRequestDAO] âœ“ Withdrawal request added with id=" + newId);
+                System.out.println("[WithdrawalRequestDAO]  Withdrawal request added with id=" + newId);
                 return newId;
             }
 

@@ -43,22 +43,22 @@ public class TransactionMenu {
                 case "7" -> dailySummary();
                 case "8" -> customerStatement();
                 case "0" -> back = true;
-                default  -> System.out.println("Invalid option. Please enter 0â€“8.");
+                default  -> System.out.println("Invalid option. Please enter 08.");
             }
         }
     }
 
     private void printMenu() {
-        System.out.println("â”‚     TRANSACTION MANAGEMENT       â”‚");
-        System.out.println("â”‚  1. Deposit money                â”‚");
-        System.out.println("â”‚  2. Withdraw money               â”‚");
-        System.out.println("â”‚  3. Transfer money               â”‚");
-        System.out.println("â”‚  4. View transaction history     â”‚");
-        System.out.println("â”‚  5. Search & filter transactions â”‚");
-        System.out.println("â”‚  6. Export history to CSV        â”‚");
-        System.out.println("â”‚  7. Daily summary                â”‚");
-        System.out.println("â”‚  8. Customer statement           â”‚");
-        System.out.println("â”‚  0. Back                         â”‚");
+        System.out.println("     TRANSACTION MANAGEMENT       ");
+        System.out.println("  1. Deposit money                ");
+        System.out.println("  2. Withdraw money               ");
+        System.out.println("  3. Transfer money               ");
+        System.out.println("  4. View transaction history     ");
+        System.out.println("  5. Search & filter transactions ");
+        System.out.println("  6. Export history to CSV        ");
+        System.out.println("  7. Daily summary                ");
+        System.out.println("  8. Customer statement           ");
+        System.out.println("  0. Back                         ");
         System.out.print("Choose: ");
     }
     private void deposit() {
@@ -79,14 +79,14 @@ public class TransactionMenu {
                         IgirePayException.ErrorType.DUPLICATE_TRANSACTION,
                         "Deposit was rejected. It may be a duplicate.");
             }
-            System.out.println("âœ“ Deposit of " + amount + " RWF completed.");
+            System.out.println(" Deposit of " + amount + " RWF completed.");
 
         } catch (IgirePayException e) {
-            System.out.println("âœ— " + e.getMessage());
+            System.out.println(" " + e.getMessage());
         }
     }
     private void withdraw() {
-        System.out.println("\nâ”€â”€ Withdraw Money â”€â”€");
+        System.out.println("\n Withdraw Money ");
         if (!requireLogin()) return;
 
         try {
@@ -140,14 +140,14 @@ public class TransactionMenu {
                         IgirePayException.ErrorType.INSUFFICIENT_BALANCE,
                         "Transfer failed. Check balance or account IDs.");
             }
-            System.out.println("âœ“ Transfer of " + amount + " RWF completed.");
+            System.out.println(" Transfer of " + amount + " RWF completed.");
 
         } catch (IgirePayException e) {
-            System.out.println("âœ— " + e.getMessage());
+            System.out.println(" " + e.getMessage());
         }
     }
     private void viewHistory() {
-        System.out.println("\nâ”€â”€ Transaction History â”€â”€");
+        System.out.println("\n Transaction History ");
         if (!requireLogin()) return;
 
         try {
@@ -155,11 +155,11 @@ public class TransactionMenu {
             paymentService.printTransactionHistory(accountId);
 
         } catch (IgirePayException e) {
-            System.out.println("âœ— " + e.getMessage());
+            System.out.println(" " + e.getMessage());
         }
     }
     private void searchTransactions() {
-        System.out.println("\nâ”€â”€ Search & Filter Transactions â”€â”€");
+        System.out.println("\n Search & Filter Transactions ");
         if (!requireLogin()) return;
 
         try {
@@ -192,7 +192,7 @@ public class TransactionMenu {
                 System.out.printf("  Found %d transaction(s):%n", results.size());
                 System.out.printf("  %-6s %-14s %-12s %10s %-10s%n",
                         "ID", "Reference", "Type", "Amount", "Status");
-                System.out.println("  " + "â”€".repeat(58));
+                System.out.println("  " + "".repeat(58));
                 for (Transaction t : results) {
                     System.out.printf("  %-6d %-14s %-12s %10.2f %-10s%n",
                             t.getId(), t.getReferenceId(), t.getTransactionType(),

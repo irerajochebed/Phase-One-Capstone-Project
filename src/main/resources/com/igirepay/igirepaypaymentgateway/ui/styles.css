@@ -1,14 +1,4 @@
-/* ═══════════════════════════════════════════════════════════
-   IgirePay IRO — White Theme (MoMo-inspired)
-   Background : #FFFFFF  white
-   Header/Nav : #0D4F6C  dark teal
-   Accent     : #F5A623  IRO orange
-   Text       : #1A1A2A  near-black
-   Muted      : #6B7280  gray
-   Card bg    : #F5F7FA  light gray
-   ═══════════════════════════════════════════════════════════ */
 
-/* ── Root ────────────────────────────────────────────────── */
 .root {
     -fx-font-family: "Segoe UI", Arial, sans-serif;
     -fx-background-color: #FFFFFF;

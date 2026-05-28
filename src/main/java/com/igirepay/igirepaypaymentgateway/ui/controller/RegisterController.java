@@ -58,9 +58,9 @@ public class RegisterController {
             showErrorDialog("Invalid PIN", "PIN must be exactly 4 digits", 
                 "Please enter a 4-digit number (e.g., 1234).\n\n" +
                 "Your PIN will be used to:\n" +
-                "â€¢ Login to your account\n" +
-                "â€¢ Confirm transactions\n" +
-                "â€¢ Access sensitive features");
+                " Login to your account\n" +
+                " Confirm transactions\n" +
+                " Access sensitive features");
             pinField.clear();
             confirmPinField.clear();
             pinField.requestFocus();
@@ -86,9 +86,9 @@ public class RegisterController {
                 "Welcome to IgirePay, " + name + "!", 
                 "Your account has been created successfully.\n\n" +
                 "You can now:\n" +
-                "â€¢ Send and receive money\n" +
-                "â€¢ Manage multiple accounts\n" +
-                "â€¢ Track your transactions\n\n" +
+                " Send and receive money\n" +
+                " Manage multiple accounts\n" +
+                " Track your transactions\n\n" +
                 "Logging you in...");
 
             // Auto-login after registration
@@ -104,13 +104,13 @@ public class RegisterController {
                     showErrorDialog("Invalid Phone Number", 
                         "Phone number format is incorrect", 
                         "Rwandan phone numbers must:\n\n" +
-                        "âœ“ Be exactly 10 digits\n" +
-                        "âœ“ Start with 078 or 079\n\n" +
+                        " Be exactly 10 digits\n" +
+                        " Start with 078 or 079\n\n" +
                         "Examples:\n" +
-                        "â€¢ 0781234567 âœ“\n" +
-                        "â€¢ 0791234567 âœ“\n" +
-                        "â€¢ 0721234567 âœ— (wrong prefix)\n" +
-                        "â€¢ 078123456 âœ— (too short)\n\n" +
+                        " 0781234567 \n" +
+                        " 0791234567 \n" +
+                        " 0721234567  (wrong prefix)\n" +
+                        " 078123456  (too short)\n\n" +
                         "Your phone: " + phone);
                     phoneField.requestFocus();
                     phoneField.selectAll();
@@ -120,14 +120,14 @@ public class RegisterController {
                     showErrorDialog("Invalid Email Address", 
                         "Email format is incorrect", 
                         "A valid email address must:\n\n" +
-                        "âœ“ Contain an @ symbol\n" +
-                        "âœ“ Contain a dot (.)\n" +
-                        "âœ“ Have @ before the dot\n\n" +
+                        " Contain an @ symbol\n" +
+                        " Contain a dot (.)\n" +
+                        " Have @ before the dot\n\n" +
                         "Examples:\n" +
-                        "â€¢ user@example.com âœ“\n" +
-                        "â€¢ name@gmail.com âœ“\n" +
-                        "â€¢ user@domain âœ— (missing dot)\n" +
-                        "â€¢ userdomain.com âœ— (missing @)\n\n" +
+                        " user@example.com \n" +
+                        " name@gmail.com \n" +
+                        " user@domain  (missing dot)\n" +
+                        " userdomain.com  (missing @)\n\n" +
                         "Your email: " + email);
                     emailField.requestFocus();
                     emailField.selectAll();
@@ -138,9 +138,9 @@ public class RegisterController {
                         "This email or phone number is already registered", 
                         "An account with this information already exists.\n\n" +
                         "Options:\n" +
-                        "â€¢ Try logging in instead\n" +
-                        "â€¢ Use a different email or phone number\n" +
-                        "â€¢ Contact support if you forgot your PIN\n\n" +
+                        " Try logging in instead\n" +
+                        " Use a different email or phone number\n" +
+                        " Contact support if you forgot your PIN\n\n" +
                         "Email: " + email + "\n" +
                         "Phone: " + phone);
                     break;

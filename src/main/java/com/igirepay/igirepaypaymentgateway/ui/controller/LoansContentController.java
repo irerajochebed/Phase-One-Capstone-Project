@@ -22,7 +22,7 @@ import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
 /**
- * LoansContentController â€” Customer loan management interface
+ * LoansContentController  Customer loan management interface
  */
 public class LoansContentController implements Initializable {
 
@@ -47,7 +47,7 @@ public class LoansContentController implements Initializable {
             return;
         }
 
-        System.out.println("[Loans] âœ“ Customer loaded: " + customer.getFullName());
+        System.out.println("[Loans]  Customer loaded: " + customer.getFullName());
         loadLoans();
     }
 
@@ -105,10 +105,10 @@ public class LoansContentController implements Initializable {
 
     private String getEmptyMessage() {
         return switch (currentFilter) {
-            case "ACTIVE" -> "ðŸ“­ No active loans";
-            case "PENDING" -> "ðŸ“­ No pending loan applications";
-            case "PAID" -> "ðŸ“­ No paid loans";
-            default -> "ðŸ“­ No loans yet. Apply for your first loan!";
+            case "ACTIVE" -> " No active loans";
+            case "PENDING" -> " No pending loan applications";
+            case "PAID" -> " No paid loans";
+            default -> " No loans yet. Apply for your first loan!";
         };
     }
 
@@ -174,9 +174,9 @@ public class LoansContentController implements Initializable {
             long daysUntilDue = loan.daysUntilDue();
             String dueDateText = "Due: " + loan.getDueDate().format(DATE_FORMAT);
             if (daysUntilDue > 0 && daysUntilDue <= 7) {
-                dueDateText += " (âš ï¸ " + daysUntilDue + " days left!)";
+                dueDateText += " ( " + daysUntilDue + " days left!)";
             } else if (loan.isOverdue()) {
-                dueDateText += " (ðŸš¨ " + loan.daysOverdue() + " days overdue!)";
+                dueDateText += " ( " + loan.daysOverdue() + " days overdue!)";
             }
             Label dueDate = new Label(dueDateText);
             dueDate.setStyle("-fx-font-size: 12px; -fx-text-fill: " + 
@@ -197,14 +197,14 @@ public class LoansContentController implements Initializable {
         buttonBox.setAlignment(Pos.CENTER_LEFT);
 
         if (Loan.STATUS_ACTIVE.equals(loan.getStatus()) || Loan.STATUS_OVERDUE.equals(loan.getStatus())) {
-            Button repayBtn = new Button("ðŸ’° Make Payment");
+            Button repayBtn = new Button(" Make Payment");
             repayBtn.setStyle("-fx-background-color: #10B981; -fx-text-fill: white; " +
                             "-fx-padding: 10 20; -fx-background-radius: 8; -fx-cursor: hand; -fx-font-weight: bold;");
             repayBtn.setOnAction(e -> onRepayLoan(loan));
             buttonBox.getChildren().add(repayBtn);
         }
 
-        Button detailsBtn = new Button("â„¹ï¸ Details");
+        Button detailsBtn = new Button(" Details");
         detailsBtn.setStyle("-fx-background-color: #3B82F6; -fx-text-fill: white; " +
                           "-fx-padding: 10 20; -fx-background-radius: 8; -fx-cursor: hand;");
         detailsBtn.setOnAction(e -> onViewDetails(loan));
@@ -239,13 +239,13 @@ public class LoansContentController implements Initializable {
 
     private String getStatusIcon(String status) {
         return switch (status) {
-            case Loan.STATUS_ACTIVE -> "âœ…";
-            case Loan.STATUS_PENDING -> "â³";
-            case Loan.STATUS_PAID -> "ðŸŽ‰";
-            case Loan.STATUS_OVERDUE -> "âš ï¸";
-            case Loan.STATUS_DEFAULTED -> "ðŸš¨";
-            case Loan.STATUS_REJECTED -> "âŒ";
-            default -> "ðŸ“‹";
+            case Loan.STATUS_ACTIVE -> "";
+            case Loan.STATUS_PENDING -> "";
+            case Loan.STATUS_PAID -> "";
+            case Loan.STATUS_OVERDUE -> "";
+            case Loan.STATUS_DEFAULTED -> "";
+            case Loan.STATUS_REJECTED -> "";
+            default -> "";
         };
     }
 
@@ -272,9 +272,9 @@ public class LoansContentController implements Initializable {
                "-fx-padding: 6 12; -fx-background-radius: 12; -fx-font-size: 12px; -fx-font-weight: bold;";
     }
 
-    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+    // 
     // ACTIONS
-    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+    // 
 
     @FXML
     private void onApplyForLoan() {
@@ -296,12 +296,12 @@ public class LoansContentController implements Initializable {
         }
         Dialog<ButtonType> dialog = new Dialog<>();
         dialog.setTitle("Apply for Loan");
-        dialog.setHeaderText("ðŸ’° Loan Application");
+        dialog.setHeaderText(" Loan Application");
 
         VBox content = new VBox(15);
         content.setPadding(new Insets(20));
 
-        Label infoLabel = new Label("Loan Terms:\nâ€¢ Interest Rate: 10%\nâ€¢ Duration: 1 month\nâ€¢ Min: 10,000 RWF | Max: 5,000,000 RWF");
+        Label infoLabel = new Label("Loan Terms:\n Interest Rate: 10%\n Duration: 1 month\n Min: 10,000 RWF | Max: 5,000,000 RWF");
         infoLabel.setStyle("-fx-background-color: #EFF6FF; -fx-padding: 10; -fx-background-radius: 8; -fx-text-fill: #1E40AF;");
 
         Label amountLabel = new Label("Loan Amount (RWF):");
@@ -383,7 +383,7 @@ public class LoansContentController implements Initializable {
 
         Dialog<ButtonType> dialog = new Dialog<>();
         dialog.setTitle("Repay Loan");
-        dialog.setHeaderText("ðŸ’° Make Loan Payment");
+        dialog.setHeaderText(" Make Loan Payment");
 
         VBox content = new VBox(15);
         content.setPadding(new Insets(20));
@@ -456,12 +456,12 @@ public class LoansContentController implements Initializable {
     private void onViewDetails(Loan loan) {
         StringBuilder details = new StringBuilder();
         details.append("LOAN DETAILS\n");
-        details.append("â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”\n\n");
+        details.append("\n\n");
         details.append("Loan ID: ").append(loan.getId()).append("\n");
         details.append("Status: ").append(getStatusIcon(loan.getStatus())).append(" ").append(loan.getStatus()).append("\n\n");
         
         details.append("FINANCIAL INFORMATION\n");
-        details.append("â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”\n");
+        details.append("\n");
         details.append("Principal Amount: ").append(String.format("%,.2f RWF", loan.getPrincipalAmount())).append("\n");
         details.append("Interest Rate: ").append(String.format("%.1f%%", loan.getInterestRate())).append("\n");
         details.append("Total Amount: ").append(String.format("%,.2f RWF", loan.getTotalAmount())).append("\n");
@@ -470,7 +470,7 @@ public class LoansContentController implements Initializable {
         details.append("Duration: ").append(loan.getDurationMonths()).append(" month(s)\n\n");
         
         details.append("DATES\n");
-        details.append("â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”\n");
+        details.append("\n");
         if (loan.getApplicationDate() != null) {
             details.append("Applied: ").append(loan.getApplicationDate().format(DATE_FORMAT)).append("\n");
         }
@@ -495,13 +495,13 @@ public class LoansContentController implements Initializable {
         
         if (loan.getPurpose() != null && !loan.getPurpose().isEmpty()) {
             details.append("\nPURPOSE\n");
-            details.append("â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”\n");
+            details.append("\n");
             details.append(loan.getPurpose()).append("\n");
         }
         
         if (loan.getRejectionReason() != null && !loan.getRejectionReason().isEmpty()) {
             details.append("\nREJECTION REASON\n");
-            details.append("â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”\n");
+            details.append("\n");
             details.append(loan.getRejectionReason()).append("\n");
         }
 

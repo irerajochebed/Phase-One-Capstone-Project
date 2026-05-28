@@ -56,7 +56,7 @@ public class AccountService {
         Account accountToDelete = accountDAO.findById(accountId);
         
         if (accountToDelete == null) {
-            System.err.println("[AccountService] âœ— Account " + accountId + " not found.");
+            System.err.println("[AccountService]  Account " + accountId + " not found.");
             return false;
         }
 
@@ -67,7 +67,7 @@ public class AccountService {
         Account remainingAccount = accountDAO.findByCustomerIdAndType(customerId, otherAccountType);
 
         if (remainingAccount == null) {
-            System.err.println("[AccountService] âœ— Cannot delete the only account. " +
+            System.err.println("[AccountService]  Cannot delete the only account. " +
                              "Customer must have at least one account.");
             return false;
         }
@@ -98,7 +98,7 @@ public class AccountService {
                     
                     if (rows == 0) {
                         conn.rollback();
-                        System.err.println("[AccountService] âœ— Failed to transfer funds.");
+                        System.err.println("[AccountService]  Failed to transfer funds.");
                         return false;
                     }
                 }
@@ -130,17 +130,17 @@ public class AccountService {
                     ps.executeUpdate();
                 }
 
-                System.out.println("[AccountService] âœ“ Transferred " + balance + 
+                System.out.println("[AccountService]  Transferred " + balance + 
                                  " from " + accountType + " to " + otherAccountType);
                 System.out.println("[AccountService]   Old balance: " + currentBalance + 
-                                 " â†’ New balance: " + newBalance);
+                                 "  New balance: " + newBalance);
             }
             
             String deleteTransactionsSql = "DELETE FROM transactions WHERE account_id = ?";
             try (PreparedStatement ps = conn.prepareStatement(deleteTransactionsSql)) {
                 ps.setInt(1, accountId);
                 int txCount = ps.executeUpdate();
-                System.out.println("[AccountService] âœ“ Deleted " + txCount + " transaction records");
+                System.out.println("[AccountService]  Deleted " + txCount + " transaction records");
             }
             
             
@@ -151,23 +151,23 @@ public class AccountService {
                 
                 if (rows == 0) {
                     conn.rollback();
-                    System.err.println("[AccountService] âœ— Failed to delete account.");
+                    System.err.println("[AccountService]  Failed to delete account.");
                     return false;
                 }
             }
 
             conn.commit(); 
-            System.out.println("[AccountService] âœ“ Account " + accountId + " deleted successfully.");
+            System.out.println("[AccountService]  Account " + accountId + " deleted successfully.");
             return true;
 
         } catch (SQLException e) {
-            System.err.println("[AccountService] âœ— Error during account deletion: " + e.getMessage());
+            System.err.println("[AccountService]  Error during account deletion: " + e.getMessage());
             e.printStackTrace();
             if (conn != null) {
                 try {
                     conn.rollback();
                 } catch (SQLException ex) {
-                    System.err.println("[AccountService] âœ— Rollback failed: " + ex.getMessage());
+                    System.err.println("[AccountService]  Rollback failed: " + ex.getMessage());
                 }
             }
             return false;
@@ -177,7 +177,7 @@ public class AccountService {
                     conn.setAutoCommit(true); 
                     conn.close();
                 } catch (SQLException e) {
-                    System.err.println("[AccountService] âœ— Error closing connection: " + e.getMessage());
+                    System.err.println("[AccountService]  Error closing connection: " + e.getMessage());
                 }
             }
         }

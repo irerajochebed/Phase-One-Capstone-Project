@@ -53,7 +53,7 @@ public class ConsoleApp {
                     System.out.println("\nThank you for using IgirePay. Goodbye!");
                     running = false;
                 }
-                default -> System.out.println("Invalid option. Please enter 0â€“6.");
+                default -> System.out.println("Invalid option. Please enter 06.");
             }
         }
         scanner.close();
@@ -64,13 +64,13 @@ public class ConsoleApp {
         if (authService.isLoggedIn()) {
            
             String badge = authService.isAdmin() ? " [ADMIN]" : " [USER]";
-            System.out.printf("  %-38sâ•‘%n",
+            System.out.printf("  %-38s%n",
                     authService.getLoggedInCustomer().getFullName() + badge);
         } else {
             System.out.println("  Status: Not logged in              ");
         }
 
-        System.out.println("         MAIN MENU                    ");System.out.println("  1. Login                            â•‘");
+        System.out.println("         MAIN MENU                    ");System.out.println("  1. Login                            ");
         System.out.println("  2. Logout                           ");
         System.out.println("  3. Customer Management              ");
         System.out.println("  4. Account Management               ");
@@ -113,7 +113,7 @@ public class ConsoleApp {
     private void printBanner() {
         System.out.println("                                            ");
         System.out.println("        IgirePay Payment Gateway              ");
-        System.out.println("        Console Application â€” LAB 3           ");
+        System.out.println("        Console Application  LAB 3           ");
         System.out.println("                                              ");
         System.out.println("  Powered by Java + JDBC + PostgreSQL         ");}
 
@@ -124,7 +124,7 @@ public class ConsoleApp {
     
     private void createFirstAdminInteractively() {
         System.out.println("     FIRST ADMIN ACCOUNT SETUP                ");
-        System.out.println("   (One-time setup â€” happens only once)     ");
+        System.out.println("   (One-time setup  happens only once)     ");
         
         try {
             System.out.print("Enter admin full name: ");
@@ -137,13 +137,13 @@ public class ConsoleApp {
             String pin = scanner.nextLine().trim();
             var newAdmin = AdminSetupUtil.createAdmin(fullName, email, phone, pin);
 
-            System.out.println("\nâœ“ SUCCESS! Admin account created:\n");
+            System.out.println("\n SUCCESS! Admin account created:\n");
             System.out.println("   Admin Details ");
-            System.out.printf("   Name  : %-25sâ”‚%n", fullName);
-            System.out.printf("   Email : %-25sâ”‚%n", email);
-            System.out.printf("   Phone : %-25sâ”‚%n", phone);
-            System.out.printf("   PIN   : %-25sâ”‚%n", pin);
-            System.out.println("  Role  : ADMIN                   â”‚");
+            System.out.printf("   Name  : %-25s%n", fullName);
+            System.out.printf("   Email : %-25s%n", email);
+            System.out.printf("   Phone : %-25s%n", phone);
+            System.out.printf("   PIN   : %-25s%n", pin);
+            System.out.println("  Role  : ADMIN                   ");
             System.out.println("\n  You can now login to unlock accounts!");
             System.out.println("  Press Enter to continue...\n");
             scanner.nextLine();

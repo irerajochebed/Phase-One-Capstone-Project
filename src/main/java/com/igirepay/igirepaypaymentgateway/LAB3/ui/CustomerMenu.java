@@ -32,7 +32,7 @@ public class CustomerMenu {
                 case "3" -> viewAccounts();
                 case "4" -> changePin();
                 case "0" -> back = true;
-                default  -> System.out.println("Invalid option. Please enter 0â€“4.");
+                default  -> System.out.println("Invalid option. Please enter 04.");
             }
         }
     }
@@ -131,7 +131,7 @@ public class CustomerMenu {
         }
 
         System.out.printf("%-6s %-10s %15s  %s%n", "ID", "Type", "Balance", "Currency");
-        System.out.println("â”€".repeat(42));
+        System.out.println("".repeat(42));
         for (var acc : accounts) {
             System.out.printf("%-6d %-10s %15.2f  %s%n",
                     acc.getId(), acc.getAccountType(), acc.getBalance(), acc.getCurrency());

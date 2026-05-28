@@ -13,7 +13,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 /**
- * MainShellController â€” manages the persistent shell.
+ * MainShellController  manages the persistent shell.
  *
  * The shell has a fixed top header and bottom nav that NEVER disappear.
  * Only the center StackPane (contentArea) is replaced when navigating.
@@ -94,7 +94,7 @@ public class MainShellController implements Initializable {
                     getClass().getResource(path));
             Node content = loader.load();
 
-            // Fill the center area â€” StackPane stretches to fill BorderPane center
+            // Fill the center area  StackPane stretches to fill BorderPane center
             contentArea.getChildren().setAll(content);
             updateNotificationBadge();
 
@@ -147,15 +147,15 @@ public class MainShellController implements Initializable {
         currentTab = tab;
 
         // Reset all to inactive
-        setNavState(navHomeIcon,     navHomeLabel,     "ðŸ ", "Home",     false);
-        setNavState(navSendIcon,     navSendLabel,     "âœˆ",  "Send",     false);
-        setNavState(navHistoryIcon,  navHistoryLabel,  "ðŸ“‹", "History",  false);
-        setNavState(navSettingsIcon, navSettingsLabel, "âš™",  "Settings", false);
+        setNavState(navHomeIcon,     navHomeLabel,     "", "Home",     false);
+        setNavState(navSendIcon,     navSendLabel,     "",  "Send",     false);
+        setNavState(navHistoryIcon,  navHistoryLabel,  "", "History",  false);
+        setNavState(navSettingsIcon, navSettingsLabel, "",  "Settings", false);
         switch (tab) {
-            case "home"     -> setNavState(navHomeIcon,     navHomeLabel,     "ðŸ ", "Home",     true);
-            case "send"     -> setNavState(navSendIcon,     navSendLabel,     "âœˆ",  "Send",     true);
-            case "history"  -> setNavState(navHistoryIcon,  navHistoryLabel,  "ðŸ“‹", "History",  true);
-            case "settings" -> setNavState(navSettingsIcon, navSettingsLabel, "âš™",  "Settings", true);
+            case "home"     -> setNavState(navHomeIcon,     navHomeLabel,     "", "Home",     true);
+            case "send"     -> setNavState(navSendIcon,     navSendLabel,     "",  "Send",     true);
+            case "history"  -> setNavState(navHistoryIcon,  navHistoryLabel,  "", "History",  true);
+            case "settings" -> setNavState(navSettingsIcon, navSettingsLabel, "",  "Settings", true);
         }
     }
 

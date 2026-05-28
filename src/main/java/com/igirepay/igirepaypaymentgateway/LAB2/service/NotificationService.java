@@ -15,7 +15,7 @@ public class NotificationService {
    
     public void notifyMoneySent(int customerId, String recipientName, double amount, 
                                double fee, String referenceId) {
-        String title = "ðŸ’¸ Money Sent Successfully";
+        String title = " Money Sent Successfully";
         String message = String.format(
             "You sent %.2f RWF to %s\n" +
             "Fee: %.2f RWF\n" +
@@ -36,7 +36,7 @@ public class NotificationService {
    
     public void notifyMoneyReceived(int customerId, String senderName, double amount, 
                                    double newBalance, String referenceId) {
-        String title = "ðŸ’° Money Received";
+        String title = " Money Received";
         String message = String.format(
             "You received %.2f RWF from %s\n" +
             "New balance: %.2f RWF\n" +
@@ -55,7 +55,7 @@ public class NotificationService {
 
     
     public void notifyDeposit(int customerId, double amount, String referenceId) {
-        String title = "âœ… Deposit Successful";
+        String title = " Deposit Successful";
         String message = String.format(
             "Deposit of %.2f RWF completed\n" +
             "Reference: %s\n" +
@@ -73,7 +73,7 @@ public class NotificationService {
 
    
     public void notifyWithdrawal(int customerId, double amount, String referenceId) {
-        String title = "ðŸ’µ Withdrawal Successful";
+        String title = " Withdrawal Successful";
         String message = String.format(
             "Withdrawal of %.2f RWF completed\n" +
             "Reference: %s\n" +
@@ -131,7 +131,7 @@ public class NotificationService {
 
    
     public void notifyPasswordReset(int customerId) {
-        String title = "ðŸ” Account Unlocked - Password Reset Required";
+        String title = " Account Unlocked - Password Reset Required";
         String message = String.format(
             "Your account has been unlocked by an administrator.\n\n" +
             "For security reasons, please change your PIN immediately.\n\n" +
@@ -148,7 +148,7 @@ public class NotificationService {
 
    
     public void notifyAccountUnlocked(int customerId) {
-        String title = "âœ… Account Unlocked";
+        String title = " Account Unlocked";
         String message = String.format(
             "Your account has been unlocked by an administrator.\n" +
             "You can now login and use all services.\n\n" +
@@ -165,7 +165,7 @@ public class NotificationService {
 
    
     public void notifyDisputeUpdate(int customerId, String disputeStatus, String adminNotes) {
-        String title = "ðŸ“‹ Dispute Update";
+        String title = " Dispute Update";
         String message = String.format(
             "Your dispute has been updated.\n\n" +
             "Status: %s\n" +
@@ -218,7 +218,7 @@ public class NotificationService {
     
     public void requestFundReturn(int receiverCustomerId, String senderName, 
                                  double amount, int transactionId, String referenceId) {
-        String title = "ðŸ”„ Fund Return Requested";
+        String title = " Fund Return Requested";
         String message = String.format(
             "%s has reported that %.2f RWF was sent to you by mistake.\n\n" +
             "Please return this amount to the sender.\n\n" +

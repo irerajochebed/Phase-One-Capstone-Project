@@ -53,7 +53,7 @@ public class AuthService {
         
         AppState.getInstance().setCurrentCustomer(customer);
         
-        System.out.println("[AuthService] âœ“ Login successful: " + customer.getFullName() + 
+        System.out.println("[AuthService]  Login successful: " + customer.getFullName() + 
                          " (Role: " + customer.getRole() + ", Admin: " + customer.isAdmin() + ")");
         return customer;
     }
@@ -89,14 +89,14 @@ public class AuthService {
         Customer current = AppState.getInstance().getCurrentCustomer();
         
         if (current == null) {
-            System.out.println("[AuthService] âœ— No user logged in");
+            System.out.println("[AuthService]  No user logged in");
             throw new IgirePayException(
                     IgirePayException.ErrorType.INVALID_CUSTOMER,
                     "Access denied. You must be logged in as an admin.");
         }
         
         if (!current.isAdmin()) {
-            System.out.println("[AuthService] âœ— User " + current.getFullName() + 
+            System.out.println("[AuthService]  User " + current.getFullName() + 
                              " is not an admin. Role: " + current.getRole() + 
                              ", isAdmin(): " + current.isAdmin());
             throw new IgirePayException(
@@ -104,7 +104,7 @@ public class AuthService {
                     "Access denied. Admin role required.");
         }
         
-        System.out.println("[AuthService] âœ“ Admin check passed for: " + current.getFullName() + 
+        System.out.println("[AuthService]  Admin check passed for: " + current.getFullName() + 
                          " (Role: " + current.getRole() + ")");
     }
    
@@ -155,7 +155,7 @@ public class AuthService {
         requireAdmin();
         boolean success = customerDAO.updateLockStatus(customerId, 0, false);
         if (success) {
-            System.out.println("[AuthService] âœ“ Account unlocked for customer ID: " + customerId);
+            System.out.println("[AuthService]  Account unlocked for customer ID: " + customerId);
         }
         return success;
     }
@@ -167,7 +167,7 @@ public class AuthService {
                     "Role must be 'ADMIN' or 'USER'.");
         boolean success = customerDAO.updateRole(customerId, role);
         if (success) {
-            System.out.println("[AuthService] âœ“ Role updated to " + role + " for customer ID: " + customerId);
+            System.out.println("[AuthService]  Role updated to " + role + " for customer ID: " + customerId);
         }
         return success;
     }

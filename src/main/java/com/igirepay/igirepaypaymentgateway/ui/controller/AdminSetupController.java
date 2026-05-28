@@ -12,7 +12,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 /**
- * AdminSetupController â€” Create the first ADMIN account.
+ * AdminSetupController  Create the first ADMIN account.
  *
  * This screen is shown ONLY if no admin exists in the database.
  * Once an admin is created, users go to the login screen.
@@ -60,7 +60,7 @@ public class AdminSetupController implements Initializable {
         try {
             var admin = AdminSetupUtil.createAdmin(fullName, email, phone, pin);
             
-            System.out.println("[AdminSetupController] âœ“ Admin created: " + admin.getEmail());
+            System.out.println("[AdminSetupController]  Admin created: " + admin.getEmail());
             
             // Show success message
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -86,7 +86,7 @@ public class AdminSetupController implements Initializable {
     }
 
     private void showError(String message) {
-        errorLabel.setText("âœ— " + message);
+        errorLabel.setText(" " + message);
         errorLabel.setStyle("-fx-text-fill: #d9534f;");
     }
 }

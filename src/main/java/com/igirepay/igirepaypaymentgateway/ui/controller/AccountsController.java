@@ -84,7 +84,7 @@ public class AccountsController implements Initializable {
                     .createAccount(customer.getId(), type, balance, "RWF");
 
             if (account != null) {
-                showCreateSuccess("âœ“ " + type + " account created! ID: " + account.getId());
+                showCreateSuccess(" " + type + " account created! ID: " + account.getId());
                 initialBalanceField.clear();
                 loadAccounts(); // refresh the table
             } else {
@@ -116,10 +116,10 @@ public class AccountsController implements Initializable {
             if (btn == ButtonType.OK) {
                 boolean ok = state.getPaymentService().deleteAccount(accountId);
                 if (ok) {
-                    deleteStatusLabel.setText("âœ“ Account deleted.");
+                    deleteStatusLabel.setText(" Account deleted.");
                     loadAccounts();
                 } else {
-                    deleteStatusLabel.setText("âœ— Could not delete account.");
+                    deleteStatusLabel.setText(" Could not delete account.");
                 }
             }
         });

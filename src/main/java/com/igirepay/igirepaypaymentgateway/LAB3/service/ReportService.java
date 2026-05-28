@@ -155,7 +155,7 @@ public class ReportService {
             } else {
                 System.out.printf("  %-6s %-14s %-12s %10s %-10s  %s%n",
                         "ID", "Reference", "Type", "Amount", "Status", "Date");
-                System.out.println("  " + "â”€".repeat(72));
+                System.out.println("  " + "".repeat(72));
                 for (Transaction t : txns) {
                     System.out.printf("  %-6d %-14s %-12s %10.2f %-10s  %s%n",
                             t.getId(),

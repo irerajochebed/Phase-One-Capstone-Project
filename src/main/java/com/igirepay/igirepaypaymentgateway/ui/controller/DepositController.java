@@ -34,7 +34,7 @@ public class DepositController implements Initializable {
         var items = FXCollections.<String>observableArrayList();
         for (Account acc : accounts)
             items.add("[" + acc.getId() + "] " + acc.getAccountType()
-                    + "  â€”  " + String.format("%,.2f", acc.getBalance()) + " RWF");
+                    + "    " + String.format("%,.2f", acc.getBalance()) + " RWF");
         accountCombo.setItems(items);
         if (!items.isEmpty()) accountCombo.getSelectionModel().selectFirst();
     }
@@ -56,7 +56,7 @@ public class DepositController implements Initializable {
                     desc.isEmpty() ? "Deposit" : desc);
 
             if (ok) {
-                showSuccess("âœ“ Deposited " + String.format("%,.2f", amount) + " RWF.  Ref: " + refId);
+                showSuccess(" Deposited " + String.format("%,.2f", amount) + " RWF.  Ref: " + refId);
                 amountField.clear();
                 descField.clear();
             } else {

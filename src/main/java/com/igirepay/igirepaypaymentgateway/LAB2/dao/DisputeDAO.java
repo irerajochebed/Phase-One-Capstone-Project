@@ -26,7 +26,7 @@ public class DisputeDAO {
             if (rs.next()) {
                 int id = rs.getInt("id");
                 dispute.setId(id);
-                System.out.println("[DisputeDAO] âœ“ Dispute created with id=" + id);
+                System.out.println("[DisputeDAO]  Dispute created with id=" + id);
                 return id;
             }
         } catch (SQLException e) {
@@ -97,7 +97,7 @@ public class DisputeDAO {
             ps.setInt(4, disputeId);
             
             int rows = ps.executeUpdate();
-            System.out.println("[DisputeDAO] âœ“ Dispute " + disputeId + " updated to " + status);
+            System.out.println("[DisputeDAO]  Dispute " + disputeId + " updated to " + status);
             return rows > 0;
         } catch (SQLException e) {
             System.err.println("[DisputeDAO] ERROR updating dispute: " + e.getMessage());

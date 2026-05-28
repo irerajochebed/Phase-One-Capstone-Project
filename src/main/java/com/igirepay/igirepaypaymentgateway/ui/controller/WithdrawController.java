@@ -44,7 +44,7 @@ public class WithdrawController implements Initializable {
         var items = FXCollections.<String>observableArrayList();
         for (Account acc : accounts)
             items.add("[" + acc.getId() + "] " + acc.getAccountType()
-                    + "  â€”  " + String.format("%,.2f", acc.getBalance()) + " RWF");
+                    + "    " + String.format("%,.2f", acc.getBalance()) + " RWF");
         accountCombo.setItems(items);
         if (!items.isEmpty()) accountCombo.getSelectionModel().selectFirst();
     }
@@ -180,8 +180,8 @@ public class WithdrawController implements Initializable {
                 showErrorDialog("Withdrawal Failed",
                     "The withdrawal could not be completed",
                     "Possible reasons:\n" +
-                    "â€¢ Insufficient funds\n" +
-                    "â€¢ Network error\n\n" +
+                    " Insufficient funds\n" +
+                    " Network error\n\n" +
                     "Your balance was NOT deducted. You can try again.");
             }
         } catch (Exception e) {

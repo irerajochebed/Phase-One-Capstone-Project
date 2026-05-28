@@ -21,7 +21,7 @@ import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
 /**
- * NotificationsContentController â€” Displays user notifications
+ * NotificationsContentController  Displays user notifications
  */
 public class NotificationsContentController implements Initializable {
 
@@ -39,9 +39,9 @@ public class NotificationsContentController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        System.out.println("â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•");
+        System.out.println("");
         System.out.println("[Notifications] INITIALIZE CALLED");
-        System.out.println("â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•");
+        System.out.println("");
         
         Customer customer = state.getCurrentCustomer();
         if (customer == null) {
@@ -50,7 +50,7 @@ public class NotificationsContentController implements Initializable {
             return;
         }
 
-        System.out.println("[Notifications] âœ“ Customer loaded: " + customer.getFullName());
+        System.out.println("[Notifications]  Customer loaded: " + customer.getFullName());
         loadNotifications();
     }
 
@@ -103,9 +103,9 @@ public class NotificationsContentController implements Initializable {
 
     private String getEmptyMessage() {
         return switch (currentFilter) {
-            case "UNREAD" -> "ðŸ“­ No unread notifications";
-            case "ACTIONS" -> "âœ… No actions required";
-            default -> "ðŸ“­ No notifications yet";
+            case "UNREAD" -> " No unread notifications";
+            case "ACTIONS" -> " No actions required";
+            default -> " No notifications yet";
         };
     }
 
@@ -195,7 +195,7 @@ public class NotificationsContentController implements Initializable {
 
         // Action required badge
         if (notification.isActionRequired()) {
-            Label actionBadge = new Label("âš ï¸ ACTION REQUIRED: " + formatActionType(notification.getActionType()));
+            Label actionBadge = new Label(" ACTION REQUIRED: " + formatActionType(notification.getActionType()));
             actionBadge.setStyle("-fx-background-color: #FEF3C7; -fx-text-fill: #92400E; " +
                                "-fx-padding: 8 12; -fx-background-radius: 8; " +
                                "-fx-font-size: 12px; -fx-font-weight: bold;");
@@ -207,14 +207,14 @@ public class NotificationsContentController implements Initializable {
         buttonBox.setAlignment(Pos.CENTER_LEFT);
 
         if (!notification.isRead()) {
-            Button markReadBtn = new Button("âœ“ Mark as Read");
+            Button markReadBtn = new Button(" Mark as Read");
             markReadBtn.setStyle("-fx-background-color: #10B981; -fx-text-fill: white; " +
                                "-fx-padding: 8 16; -fx-background-radius: 8; -fx-cursor: hand;");
             markReadBtn.setOnAction(e -> onMarkAsRead(notification));
             buttonBox.getChildren().add(markReadBtn);
         }
 
-        Button deleteBtn = new Button("ðŸ—‘ Delete");
+        Button deleteBtn = new Button(" Delete");
         deleteBtn.setStyle("-fx-background-color: #EF4444; -fx-text-fill: white; " +
                          "-fx-padding: 8 16; -fx-background-radius: 8; -fx-cursor: hand;");
         deleteBtn.setOnAction(e -> onDeleteNotification(notification));
@@ -234,16 +234,16 @@ public class NotificationsContentController implements Initializable {
 
     private String getNotificationIcon(String type) {
         return switch (type) {
-            case Notification.TYPE_SENT -> "ðŸ“¤";
-            case Notification.TYPE_RECEIVED -> "ðŸ“¥";
-            case Notification.TYPE_DEPOSIT -> "ðŸ’°";
-            case Notification.TYPE_WITHDRAWAL -> "ðŸ’¸";
-            case Notification.TYPE_ADMIN_MESSAGE -> "ðŸ‘‘";
-            case Notification.TYPE_PASSWORD_RESET -> "ðŸ”‘";
-            case Notification.TYPE_DISPUTE_UPDATE -> "âš–ï¸";
-            case Notification.TYPE_ACCOUNT_UNLOCKED -> "ðŸ”“";
-            case Notification.TYPE_FROZEN_FUNDS -> "â„ï¸";
-            default -> "ðŸ””";
+            case Notification.TYPE_SENT -> "";
+            case Notification.TYPE_RECEIVED -> "";
+            case Notification.TYPE_DEPOSIT -> "";
+            case Notification.TYPE_WITHDRAWAL -> "";
+            case Notification.TYPE_ADMIN_MESSAGE -> "";
+            case Notification.TYPE_PASSWORD_RESET -> "";
+            case Notification.TYPE_DISPUTE_UPDATE -> "";
+            case Notification.TYPE_ACCOUNT_UNLOCKED -> "";
+            case Notification.TYPE_FROZEN_FUNDS -> "";
+            default -> "";
         };
     }
 
@@ -252,9 +252,9 @@ public class NotificationsContentController implements Initializable {
         return actionType.replace("_", " ");
     }
 
-    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+    // 
     // ACTIONS
-    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+    // 
 
     private void onMarkAsRead(Notification notification) {
         boolean success = notificationDAO.markAsRead(notification.getId());
@@ -330,7 +330,7 @@ public class NotificationsContentController implements Initializable {
     }
 
     private void showError(String message) {
-        Label error = new Label("âŒ " + message);
+        Label error = new Label(" " + message);
         error.setStyle("-fx-text-fill: #DC2626; -fx-font-size: 16px; -fx-padding: 40;");
         notificationsBox.getChildren().setAll(error);
     }

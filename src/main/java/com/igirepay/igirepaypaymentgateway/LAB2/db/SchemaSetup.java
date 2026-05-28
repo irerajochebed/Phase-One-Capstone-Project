@@ -65,16 +65,16 @@ public class SchemaSetup {
              Statement stmt = conn.createStatement()) {
 
             stmt.execute(createCustomers);
-            System.out.println("[SchemaSetup] âœ“ Table 'customers' ready.");
+            System.out.println("[SchemaSetup]  Table 'customers' ready.");
 
             stmt.execute(createAccounts);
-            System.out.println("[SchemaSetup] âœ“ Table 'accounts' ready.");
+            System.out.println("[SchemaSetup]  Table 'accounts' ready.");
 
             stmt.execute(createTransactions);
-            System.out.println("[SchemaSetup] âœ“ Table 'transactions' ready.");
+            System.out.println("[SchemaSetup]  Table 'transactions' ready.");
 
             stmt.execute(createProcessedRequests);
-            System.out.println("[SchemaSetup] âœ“ Table 'processed_requests' ready.");
+            System.out.println("[SchemaSetup]  Table 'processed_requests' ready.");
 
             
             String createNotifications = """
@@ -128,27 +128,27 @@ public class SchemaSetup {
                 """;
             
             stmt.execute(createNotifications);
-            System.out.println("[SchemaSetup] âœ“ Table 'notifications' ready.");
+            System.out.println("[SchemaSetup]  Table 'notifications' ready.");
 
             stmt.execute(createDisputes);
-            System.out.println("[SchemaSetup] âœ“ Table 'disputes' ready.");
+            System.out.println("[SchemaSetup]  Table 'disputes' ready.");
 
             stmt.execute(createFrozenTransactions);
-            System.out.println("[SchemaSetup] âœ“ Table 'frozen_transactions' ready.");
+            System.out.println("[SchemaSetup]  Table 'frozen_transactions' ready.");
            
             stmt.execute("ALTER TABLE customers ADD COLUMN IF NOT EXISTS role VARCHAR(10) NOT NULL DEFAULT 'USER'");
             stmt.execute("ALTER TABLE customers ADD COLUMN IF NOT EXISTS failed_pin_attempts INT NOT NULL DEFAULT 0");
             stmt.execute("ALTER TABLE customers ADD COLUMN IF NOT EXISTS is_locked BOOLEAN NOT NULL DEFAULT FALSE");
-            System.out.println("[SchemaSetup] âœ“ Customer security columns ready.");
+            System.out.println("[SchemaSetup]  Customer security columns ready.");
             stmt.execute("ALTER TABLE accounts ADD COLUMN IF NOT EXISTS is_active BOOLEAN NOT NULL DEFAULT TRUE");
             stmt.execute("ALTER TABLE accounts ADD COLUMN IF NOT EXISTS last_transaction_date TIMESTAMP");
-            System.out.println("[SchemaSetup] âœ“ Account status columns ready.");
+            System.out.println("[SchemaSetup]  Account status columns ready.");
             stmt.execute("ALTER TABLE notifications ADD COLUMN IF NOT EXISTS sender_name VARCHAR(100)");
             stmt.execute("ALTER TABLE notifications ADD COLUMN IF NOT EXISTS receiver_name VARCHAR(100)");
             stmt.execute("ALTER TABLE notifications ADD COLUMN IF NOT EXISTS action_required BOOLEAN NOT NULL DEFAULT FALSE");
             stmt.execute("ALTER TABLE notifications ADD COLUMN IF NOT EXISTS action_type VARCHAR(50)");
             stmt.execute("ALTER TABLE notifications ADD COLUMN IF NOT EXISTS related_transaction_id INT");
-            System.out.println("[SchemaSetup] âœ“ Notification enhancement columns ready.");
+            System.out.println("[SchemaSetup]  Notification enhancement columns ready.");
 
           String createLoans = """
                 CREATE TABLE IF NOT EXISTS loans (
@@ -176,7 +176,7 @@ public class SchemaSetup {
             """;
             
             stmt.execute(createLoans);
-            System.out.println("[SchemaSetup] âœ“ Table 'loans' ready.");
+            System.out.println("[SchemaSetup]  Table 'loans' ready.");
 
            String createWithdrawalRequests = """
                 CREATE TABLE IF NOT EXISTS withdrawal_requests (
@@ -194,7 +194,7 @@ public class SchemaSetup {
             """;
             
             stmt.execute(createWithdrawalRequests);
-            System.out.println("[SchemaSetup] âœ“ Table 'withdrawal_requests' ready.");
+            System.out.println("[SchemaSetup]  Table 'withdrawal_requests' ready.");
 
             String addUniqueConstraint = """
                 DO $$
@@ -211,7 +211,7 @@ public class SchemaSetup {
             """;
             
             stmt.execute(addUniqueConstraint);
-            System.out.println("[SchemaSetup] âœ“ Unique constraint 'unique_customer_account_type' ready.");
+            System.out.println("[SchemaSetup]  Unique constraint 'unique_customer_account_type' ready.");
 
             System.out.println("[SchemaSetup] All tables created successfully.\n");
 

@@ -110,6 +110,21 @@ IgirePay follows a layered architecture pattern:
 
 ---
 
+## 📦 Prerequisites
+
+Before running IgirePay, ensure you have the following installed:
+
+- **Java Development Kit (JDK) 17** or higher
+  - [Download JDK](https://www.oracle.com/java/technologies/downloads/)
+  
+- **Apache Maven 3.8+**
+  - [Download Maven](https://maven.apache.org/download.cgi)
+  
+- **PostgreSQL 15+**
+  - [Download PostgreSQL](https://www.postgresql.org/download/)
+  
+- **Git** (optional, for cloning)
+  - [Download Git](https://git-scm.com/downloads)
 
 ### Verify Installation
 
@@ -543,25 +558,6 @@ Registers a new customer.
 
 
 
-## 🤝 Contributing
-
-Contributions are welcome! Please follow these steps:
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-### Code Style
-- Follow Java naming conventions
-- Use meaningful variable and method names
-- Add comments for complex logic only
-- Write clean, self-documenting code
-
----
-
-
 ## 🙏 Acknowledgments
 
 - JavaFX community for excellent UI framework
@@ -571,7 +567,25 @@ Contributions are welcome! Please follow these steps:
 
 ---
 
+## 📞 Support
 
+For support, email support@igirepay.com or open an issue in the GitHub repository.
 
+---
+
+## 🗺️ Roadmap
+
+- [ ] Mobile app (Android/iOS)
+- [ ] REST API for third-party integrations
+- [ ] Multi-currency support
+- [ ] Biometric authentication
+- [ ] Scheduled payments
+- [ ] Bill payment integration
+- [ ] QR code payments
+- [ ] Transaction analytics dashboard
+- [ ] Email notifications
+- [ ] Two-factor authentication (2FA)
+
+---
 
 **Made with ❤️ in Rwanda**
