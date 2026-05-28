@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 /**
- * LoginController â€” PIN-only login, just like MTN MoMo.
+ * LoginController  PIN-only login, just like MTN MoMo.
  *
  * The user picks their account from a dropdown (by name/email),
  * then enters only their 4-digit PIN. No password needed.
@@ -42,9 +42,9 @@ public class LoginController implements Initializable {
             if (logoFile.exists()) {
                 Image logoImage = new Image(logoFile.toURI().toString());
                 loginLogoView.setImage(logoImage);
-                System.out.println("[LoginController] âœ“ Logo loaded successfully");
+                System.out.println("[LoginController]  Logo loaded successfully");
             } else {
-                System.out.println("[LoginController] âš  Logo file not found at: " + logoFile.getAbsolutePath());
+                System.out.println("[LoginController]  Logo file not found at: " + logoFile.getAbsolutePath());
             }
         } catch (Exception e) {
             System.err.println("[LoginController] Could not load logo: " + e.getMessage());
@@ -77,7 +77,7 @@ public class LoginController implements Initializable {
         }
 
         if (items.isEmpty()) {
-            items.add("No accounts yet â€” create one below");
+            items.add("No accounts yet  create one below");
         }
 
         accountCombo.setItems(items);
@@ -110,7 +110,7 @@ public class LoginController implements Initializable {
             // Use email + PIN to authenticate
             Customer logged = state.getAuthService().login(selected.getEmail(), pin);
             
-            System.out.println("[LoginController] âœ“ Login successful!");
+            System.out.println("[LoginController]  Login successful!");
             System.out.println("  - Customer ID: " + logged.getId());
             System.out.println("  - Name: " + logged.getFullName());
             System.out.println("  - Role: " + logged.getRole());
@@ -125,11 +125,11 @@ public class LoginController implements Initializable {
             SceneHelper.switchTo(IgirePayApp.getPrimaryStage(), "dashboard");
 
         } catch (IgirePayException e) {
-            System.err.println("[LoginController] âœ— Login failed: " + e.getMessage());
+            System.err.println("[LoginController]  Login failed: " + e.getMessage());
             showError(e.getMessage());
             pinField.clear();
         } catch (Exception e) {
-            System.err.println("[LoginController] âœ— Connection error: " + e.getMessage());
+            System.err.println("[LoginController]  Connection error: " + e.getMessage());
             e.printStackTrace();
             showError("Connection error. Is PostgreSQL running?");
         }

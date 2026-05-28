@@ -62,7 +62,7 @@ public class AccountPanelController implements Initializable {
                     newPinField.getText().trim(),
                     confirmPinField.getText().trim()
             );
-            pinStatusLabel.setText("✓ PIN changed successfully.");
+            pinStatusLabel.setText(" PIN changed successfully.");
             pinStatusLabel.getStyleClass().removeAll("msg-error");
             if (!pinStatusLabel.getStyleClass().contains("msg-success"))
                 pinStatusLabel.getStyleClass().add("msg-success");
@@ -79,7 +79,7 @@ public class AccountPanelController implements Initializable {
     private void onSignOut() {
         state.getAuthService().logout();
         state.setCurrentCustomer(null);
-        // Navigate to login — this replaces the whole scene (no shell)
+        // Navigate to login  this replaces the whole scene (no shell)
         try {
             com.igirepay.igirepaypaymentgateway.ui.SceneHelper
                     .switchTo(com.igirepay.igirepaypaymentgateway.ui.IgirePayApp

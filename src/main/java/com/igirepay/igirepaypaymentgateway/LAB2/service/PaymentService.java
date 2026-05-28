@@ -37,7 +37,7 @@ public class PaymentService {
         Customer customer = new Customer(fullName, email, phoneNumber, pin);
         int id = customerDAO.addCustomer(customer);
         if (id == -1) {
-            System.out.println("[PaymentService] âœ— Failed to register customer.");
+            System.out.println("[PaymentService]  Failed to register customer.");
             throw new IgirePayException(
                 IgirePayException.ErrorType.DATABASE_ERROR,
                 "Failed to register customer. Email or phone may already be in use."
@@ -56,7 +56,7 @@ public class PaymentService {
         Account account = new Account(customerId, accountType, initialBalance, currency);
         int id = accountDAO.createAccount(account);
         if (id == -1) {
-            System.out.println("[PaymentService] âœ— Failed to create account.");
+            System.out.println("[PaymentService]  Failed to create account.");
             return null;
         }
         return account;
@@ -107,7 +107,7 @@ public class PaymentService {
                 conn.commit(); 
                 
                 double newBalance = account.getBalance() + amount;
-                System.out.println("[PaymentService] âœ“ Deposit committed. New balance: " + newBalance);
+                System.out.println("[PaymentService]  Deposit committed. New balance: " + newBalance);
                 
                 
                 sendDepositNotification(account.getCustomerId(), amount, newBalance, referenceId);
@@ -169,7 +169,7 @@ public class PaymentService {
                 conn.commit(); 
                 
                 double newBalance = account.getBalance() - totalDeduction;
-                System.out.println("[PaymentService] âœ“ Withdrawal committed. Amount: " + amount 
+                System.out.println("[PaymentService]  Withdrawal committed. Amount: " + amount 
                         + " RWF, Fee: " + fee + " RWF, Total deducted: " + totalDeduction + " RWF");
                 
                 
@@ -179,11 +179,11 @@ public class PaymentService {
 
             } catch (SQLException e) {
                 conn.rollback(); 
-                System.err.println("[PaymentService] âœ— Withdrawal rolled back: " + e.getMessage());
+                System.err.println("[PaymentService]  Withdrawal rolled back: " + e.getMessage());
                 return false;
             }
         } catch (SQLException e) {
-            System.err.println("[PaymentService] âœ— DB connection error: " + e.getMessage());
+            System.err.println("[PaymentService]  DB connection error: " + e.getMessage());
             return false;
         }
     }
@@ -242,7 +242,7 @@ public class PaymentService {
                 double senderNewBalance = from.getBalance() - totalDeduction;
                 double receiverNewBalance = to.getBalance() + amount;
                 
-                System.out.println("[PaymentService] âœ“ Transfer committed. "
+                System.out.println("[PaymentService]  Transfer committed. "
                         + amount + " RWF moved from " + fromAccountId + " to " + toAccountId 
                         + " (Fee: " + fee + " RWF)");
                 
@@ -253,11 +253,11 @@ public class PaymentService {
 
             } catch (SQLException e) {
                 conn.rollback(); 
-                System.err.println("[PaymentService] âœ— Transfer rolled back: " + e.getMessage());
+                System.err.println("[PaymentService]  Transfer rolled back: " + e.getMessage());
                 return false;
             }
         } catch (SQLException e) {
-            System.err.println("[PaymentService] âœ— DB connection error: " + e.getMessage());
+            System.err.println("[PaymentService]  DB connection error: " + e.getMessage());
             return false;
         }
     }
@@ -349,7 +349,7 @@ public class PaymentService {
 
     public void printAllTransactions() {
         List<Transaction> all = transactionDAO.findAll();
-        System.out.println("\nâ•â•â•â•â•â•â•â•â•â• ALL TRANSACTIONS â•â•â•â•â•â•â•â•â•â•");
+        System.out.println("\n ALL TRANSACTIONS ");
         for (Transaction t : all) System.out.println("  " + t);
        
         }
@@ -445,10 +445,10 @@ public class PaymentService {
             );
 
             notificationDAO.addNotification(notification);
-            System.out.println("[PaymentService] âœ“ Deposit notification sent to customer " + customerId);
+            System.out.println("[PaymentService]  Deposit notification sent to customer " + customerId);
 
         } catch (Exception e) {
-            System.err.println("[PaymentService] âœ— Failed to send deposit notification: " + e.getMessage());
+            System.err.println("[PaymentService]  Failed to send deposit notification: " + e.getMessage());
         }
     }
 
@@ -477,10 +477,10 @@ public class PaymentService {
             );
 
             notificationDAO.addNotification(notification);
-            System.out.println("[PaymentService] âœ“ Withdrawal notification sent to customer " + customerId);
+            System.out.println("[PaymentService]  Withdrawal notification sent to customer " + customerId);
 
         } catch (Exception e) {
-            System.err.println("[PaymentService] âœ— Failed to send withdrawal notification: " + e.getMessage());
+            System.err.println("[PaymentService]  Failed to send withdrawal notification: " + e.getMessage());
         }
     }
 
@@ -498,7 +498,7 @@ public class PaymentService {
             Customer receiver = customerDAO.findById(toCustomerId);
 
             if (sender == null || receiver == null) {
-                System.err.println("[PaymentService] âœ— Cannot send transfer notifications: customer not found");
+                System.err.println("[PaymentService]  Cannot send transfer notifications: customer not found");
                 return;
             }
 
@@ -533,7 +533,7 @@ public class PaymentService {
             );
 
             notificationDAO.addNotification(senderNotification);
-            System.out.println("[PaymentService] âœ“ Transfer notification sent to sender " + fromCustomerId);
+            System.out.println("[PaymentService]  Transfer notification sent to sender " + fromCustomerId);
 
             // 2. Notification to RECEIVER
             String receiverTitle = "Payment Received";
@@ -561,15 +561,15 @@ public class PaymentService {
             );
 
             notificationDAO.addNotification(receiverNotification);
-            System.out.println("[PaymentService] âœ“ Transfer notification sent to receiver " + toCustomerId);
+            System.out.println("[PaymentService]  Transfer notification sent to receiver " + toCustomerId);
 
         } catch (Exception e) {
-            System.err.println("[PaymentService] âœ— Failed to send transfer notifications: " + e.getMessage());
+            System.err.println("[PaymentService]  Failed to send transfer notifications: " + e.getMessage());
         }
     }
 
     /**
-     * Send notification to customer after successful internal transfer (wallet â†” savings).
+     * Send notification to customer after successful internal transfer (wallet  savings).
      */
     private void sendInternalTransferNotification(int customerId, String fromAccountType, 
                                                  String toAccountType, double amount, 
@@ -602,16 +602,16 @@ public class PaymentService {
             );
 
             notificationDAO.addNotification(notification);
-            System.out.println("[PaymentService] âœ“ Internal transfer notification sent to customer " + customerId);
+            System.out.println("[PaymentService]  Internal transfer notification sent to customer " + customerId);
 
         } catch (Exception e) {
-            System.err.println("[PaymentService] âœ— Failed to send internal transfer notification: " + e.getMessage());
+            System.err.println("[PaymentService]  Failed to send internal transfer notification: " + e.getMessage());
         }
     }
 
     /**
      * Mask phone number for privacy (show first 3 digits + ...).
-     * Example: 0781234567 â†’ 078...
+     * Example: 0781234567  078...
      */
     private String maskPhoneNumber(String phoneNumber) {
         if (phoneNumber == null || phoneNumber.length() < 3) {

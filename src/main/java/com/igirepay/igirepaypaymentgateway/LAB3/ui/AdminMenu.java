@@ -23,7 +23,7 @@ public class AdminMenu {
 
     public void show() {
         if (!authService.isAdmin()) {
-            System.out.println("âœ— Access denied. Admin role required.");
+            System.out.println(" Access denied. Admin role required.");
             return;
         }
 
@@ -39,7 +39,7 @@ public class AdminMenu {
                 case "5" -> listAllTransactions();
                 case "6" -> deleteCustomer();
                 case "0" -> back = true;
-                default  -> System.out.println("Invalid option. Please enter 0â€“6.");
+                default  -> System.out.println("Invalid option. Please enter 06.");
             }
         }
     }
@@ -61,7 +61,7 @@ public class AdminMenu {
 
              System.out.printf("%-5s %-20s %-25s %-15s %-7s %-8s %-6s%n",
                     "ID", "Name", "Email", "Phone", "Role", "Locked", "Fails");
-            System.out.println("â”€".repeat(90));
+            System.out.println("".repeat(90));
 
             for (Customer c : customers) {
                 System.out.printf("%-5d %-20s %-25s %-15s %-7s %-8s %-6d%n",
@@ -70,12 +70,12 @@ public class AdminMenu {
                         c.getEmail(),
                         c.getPhoneNumber(),
                         c.getRole(),
-                        c.isLocked() ? "ðŸ”’ YES" : "NO",
+                        c.isLocked() ? " YES" : "NO",
                         c.getFailedPinAttempts());
             }
            
         } catch (IgirePayException e) {
-            System.out.println("âœ— " + e.getMessage());
+            System.out.println(" " + e.getMessage());
         }
     }
     private void unlockAccount() {
@@ -102,7 +102,7 @@ public class AdminMenu {
             String role = scanner.nextLine().trim().toUpperCase();
 
             boolean ok = authService.setRole(customerId, role);
-            System.out.println(ok ? " Role updated to " + role : "âœ— Failed to update role.");
+            System.out.println(ok ? " Role updated to " + role : " Failed to update role.");
 
         } catch (IgirePayException e) {
             System.out.println("" + e.getMessage());

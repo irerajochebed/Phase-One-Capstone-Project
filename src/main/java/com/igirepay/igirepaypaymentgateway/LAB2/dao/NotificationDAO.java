@@ -40,7 +40,7 @@ public class NotificationDAO {
             if (rs.next()) {
                 int newId = rs.getInt("id");
                 notification.setId(newId);
-                System.out.println("[NotificationDAO] âœ“ Notification added with id=" + newId);
+                System.out.println("[NotificationDAO]  Notification added with id=" + newId);
                 return newId;
             }
 
@@ -116,7 +116,7 @@ public class NotificationDAO {
              PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setInt(1, customerId);
             int rows = ps.executeUpdate();
-            System.out.println("[NotificationDAO] âœ“ Marked " + rows + " notifications as read");
+            System.out.println("[NotificationDAO]  Marked " + rows + " notifications as read");
             return rows > 0;
         } catch (SQLException e) {
             System.err.println("[NotificationDAO] ERROR marking all as read: " + e.getMessage());

@@ -19,10 +19,10 @@ public class IgirePayApp extends Application {
         primaryStage = stage;
         SchemaSetup.createTables();
 
-        stage.setTitle("IgirePay â€” Digital Wallet");
+        stage.setTitle("IgirePay Digital Wallet");
         stage.setResizable(true);   
         stage.setMinWidth(480);     
-        stage.setMinHeight(600);
+        stage.setMinHeight(500);
         if (!AdminSetupUtil.adminExists()) {
             
             SceneHelper.switchTo(stage, "admin-setup");

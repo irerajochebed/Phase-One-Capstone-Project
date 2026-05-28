@@ -28,7 +28,7 @@ public class CustomerDAO {
             if (rs.next()) {
                 int newId = rs.getInt("id");
                 customer.setId(newId);
-                System.out.println("[CustomerDAO] âœ“ Customer added with id=" + newId);
+                System.out.println("[CustomerDAO]  Customer added with id=" + newId);
                 return newId;
             }
 
@@ -89,7 +89,7 @@ public class CustomerDAO {
             ps.setString(4, customer.getPin());
             ps.setInt(5, customer.getId());
             int rows = ps.executeUpdate();
-            System.out.println("[CustomerDAO] âœ“ Customer updated. Rows: " + rows);
+            System.out.println("[CustomerDAO]  Customer updated. Rows: " + rows);
             return rows > 0;
         } catch (SQLException e) {
             System.err.println("[CustomerDAO] ERROR updating customer: " + e.getMessage());
@@ -119,7 +119,7 @@ public class CustomerDAO {
             ps.setString(1, role);
             ps.setInt(2, customerId);
             int rows = ps.executeUpdate();
-            System.out.println("[CustomerDAO] âœ“ Role updated to " + role + " for customer id=" + customerId);
+            System.out.println("[CustomerDAO]  Role updated to " + role + " for customer id=" + customerId);
             return rows > 0;
         } catch (SQLException e) {
             System.err.println("[CustomerDAO] ERROR updating role: " + e.getMessage());
@@ -134,7 +134,7 @@ public class CustomerDAO {
              PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setInt(1, id);
             int rows = ps.executeUpdate();
-            System.out.println("[CustomerDAO] âœ“ Customer deleted. Rows: " + rows);
+            System.out.println("[CustomerDAO]  Customer deleted. Rows: " + rows);
             return rows > 0;
         } catch (SQLException e) {
             System.err.println("[CustomerDAO] ERROR deleting customer: " + e.getMessage());

@@ -39,15 +39,15 @@ public class DashboardController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        System.out.println("â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•");
+        System.out.println("");
         System.out.println("[Dashboard] INITIALIZE CALLED");
-        System.out.println("â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•");
+        System.out.println("");
         try {
             File logoFile = new File("C:\\Users\\HP\\Downloads\\Igire_Rwanda_Logo.png");
             if (logoFile.exists()) {
                 Image logoImage = new Image(logoFile.toURI().toString());
                 headerLogoView.setImage(logoImage);
-                System.out.println("[Dashboard] âœ“ Logo loaded");
+                System.out.println("[Dashboard]  Logo loaded");
             }
         } catch (Exception e) {
             System.err.println("[Dashboard] Could not load logo: " + e.getMessage());
@@ -60,7 +60,7 @@ public class DashboardController implements Initializable {
             return; 
         }
 
-        System.out.println("[Dashboard] âœ“ Customer loaded: " + customer.getFullName());
+        System.out.println("[Dashboard]  Customer loaded: " + customer.getFullName());
         System.out.println("[Dashboard]   - ID: " + customer.getId());
         System.out.println("[Dashboard]   - Email: " + customer.getEmail());
         System.out.println("[Dashboard]   - Role: " + customer.getRole());
@@ -78,14 +78,14 @@ public class DashboardController implements Initializable {
             if (adminPanelSection != null) {
                 adminPanelSection.setManaged(true);
                 adminPanelSection.setVisible(true);
-                System.out.println("[Dashboard] âœ“ Admin panel section ENABLED");
+                System.out.println("[Dashboard]  Admin panel section ENABLED");
                 System.out.println("[Dashboard]   - setManaged(true) called");
                 System.out.println("[Dashboard]   - setVisible(true) called");
             } else {
-                System.err.println("[Dashboard] âœ— ERROR: adminPanelSection is NULL!");
+                System.err.println("[Dashboard]  ERROR: adminPanelSection is NULL!");
             }
         } else {
-            System.out.println("[Dashboard] â„¹ User is not admin, panel hidden");
+            System.out.println("[Dashboard]  User is not admin, panel hidden");
         }
 
         // Sum all account balances
@@ -95,15 +95,15 @@ public class DashboardController implements Initializable {
         updateBalanceDisplay();
         loadRecentTransactions(accounts);
         
-        System.out.println("[Dashboard] âœ“ Initialize complete");
-        System.out.println("â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•");
+        System.out.println("[Dashboard]  Initialize complete");
+        System.out.println("");
     }
 
     private void updateBalanceDisplay() {
         if (balanceVisible) {
             balanceLabel.setText(String.format("%,.0f", totalBalance));
         } else {
-            balanceLabel.setText("â€¢â€¢â€¢â€¢â€¢â€¢");
+            balanceLabel.setText("");
         }
     }
 

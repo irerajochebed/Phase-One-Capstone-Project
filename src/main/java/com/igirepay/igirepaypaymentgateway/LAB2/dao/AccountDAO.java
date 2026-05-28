@@ -27,7 +27,7 @@ public class AccountDAO {
             if (rs.next()) {
                 int newId = rs.getInt("id");
                 account.setId(newId);
-                System.out.println("[AccountDAO] âœ“ Account created with id=" + newId);
+                System.out.println("[AccountDAO]  Account created with id=" + newId);
                 return newId;
             }
 
@@ -110,8 +110,8 @@ public class AccountDAO {
             ps.setInt(2, accountId);
 
             int rows = ps.executeUpdate();
-            System.out.println("[AccountDAO] âœ“ Balance updated for account id=" + accountId
-                    + " â†’ " + newBalance);
+            System.out.println("[AccountDAO]  Balance updated for account id=" + accountId
+                    + "  " + newBalance);
             return rows > 0;
 
         } catch (SQLException e) {
@@ -129,7 +129,7 @@ public class AccountDAO {
             
             ps.setInt(1, accountId);
             int rows = ps.executeUpdate();
-            System.out.println("[AccountDAO] âœ“ Account " + accountId + " marked as inactive");
+            System.out.println("[AccountDAO]  Account " + accountId + " marked as inactive");
             return rows > 0;
         } catch (SQLException e) {
             System.err.println("[AccountDAO] ERROR marking account inactive: " + e.getMessage());
@@ -183,7 +183,7 @@ public class AccountDAO {
 
             ps.setInt(1, accountId);
             int rows = ps.executeUpdate();
-            System.out.println("[AccountDAO] âœ“ Account deleted. id=" + accountId);
+            System.out.println("[AccountDAO]  Account deleted. id=" + accountId);
             return rows > 0;
 
         } catch (SQLException e) {

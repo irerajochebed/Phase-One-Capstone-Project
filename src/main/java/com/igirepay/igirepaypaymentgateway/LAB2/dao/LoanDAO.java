@@ -33,7 +33,7 @@ public class LoanDAO {
             if (rs.next()) {
                 int newId = rs.getInt("id");
                 loan.setId(newId);
-                System.out.println("[LoanDAO] âœ“ Loan application created with id=" + newId);
+                System.out.println("[LoanDAO]  Loan application created with id=" + newId);
                 return newId;
             }
 

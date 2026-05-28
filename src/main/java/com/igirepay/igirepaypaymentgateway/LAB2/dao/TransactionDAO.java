@@ -30,7 +30,7 @@ public class TransactionDAO {
             if (rs.next()) {
                 int newId = rs.getInt("id");
                 transaction.setId(newId);
-                System.out.println("[TransactionDAO] âœ“ Transaction saved with id=" + newId);
+                System.out.println("[TransactionDAO]  Transaction saved with id=" + newId);
                 return newId;
             }
 

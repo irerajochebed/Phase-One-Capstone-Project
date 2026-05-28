@@ -149,19 +149,19 @@ public class WithdrawalRequestsController implements Initializable {
         Label timeLabel = new Label();
         if (request.getStatus().equals(WithdrawalRequest.STATUS_PENDING)) {
             if (request.isAvailable()) {
-                timeLabel.setText("âœ… Ready to process now!");
+                timeLabel.setText(" Ready to process now!");
                 timeLabel.setStyle("-fx-text-fill:#4CAF50; -fx-font-weight:bold;");
             } else {
                 long hoursRemaining = request.getHoursRemaining();
-                timeLabel.setText("â³ Available in " + hoursRemaining + " hours");
+                timeLabel.setText(" Available in " + hoursRemaining + " hours");
                 timeLabel.setStyle("-fx-text-fill:#FF9800; -fx-font-weight:bold;");
             }
         } else if (request.getStatus().equals(WithdrawalRequest.STATUS_PROCESSED)) {
-            timeLabel.setText("âœ“ Processed on " + 
+            timeLabel.setText(" Processed on " + 
                 (request.getProcessedDate() != null ? request.getProcessedDate().format(fmt) : "N/A"));
             timeLabel.setStyle("-fx-text-fill:#4CAF50;");
         } else if (request.getStatus().equals(WithdrawalRequest.STATUS_CANCELLED)) {
-            timeLabel.setText("âœ— Cancelled");
+            timeLabel.setText(" Cancelled");
             timeLabel.setStyle("-fx-text-fill:#F44336;");
         }
 

@@ -83,7 +83,7 @@ public class  Main {
         service.printTransactionHistory(aliceWallet.getId());
         service.printTransactionHistory(bobWallet.getId());
         
-        System.out.println("[Simulating network retry â€” same referenceId sent again]");
+        System.out.println("[Simulating network retry  same referenceId sent again]");
 
         service.deposit(aliceWallet.getId(), "REF-DEP-001", 10_000.0, "Top-up (RETRY)");
 

@@ -19,7 +19,8 @@ public class Loan {
     private double principalAmount;      
     private double interestRate;         
     private double totalAmount;          
-    private double amountPaid;          
+    private double amountPaid;
+    private double remainingBalance;
     private int durationMonths;         
     private LocalDateTime applicationDate;
     private LocalDateTime approvalDate;

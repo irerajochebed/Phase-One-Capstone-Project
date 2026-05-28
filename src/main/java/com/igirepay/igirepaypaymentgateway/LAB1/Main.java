@@ -12,7 +12,7 @@ public class Main {
     public static void main(String[] args) {
 
         System.out.println("--------------------------------------------");
-        System.out.println("║   IgirePay Payment Gateway — LAB 1       ║");
+        System.out.println("   IgirePay Payment Gateway  LAB 1       ");
         System.out.println("--------------------------------------------\n");
 
         Customer alice = new Customer("CUST001", "Alice Uwimana",
@@ -78,7 +78,7 @@ public class Main {
         service.processTransaction("CUST001", "ACC001", t2);
         service.processTransaction("CUST002", "ACC003", t3);
 
-        ystem.out.println("\n[Simulating network retry — same referenceId sent again]");
+        System.out.println("\n[Simulating network retry  same referenceId sent again]");
 
         Transaction t1Retry = new Transaction("TXN004", "REF-AAA-001",
                 15_000.0, Transaction.TYPE_DEPOSIT, "Top-up from bank (RETRY)");
@@ -104,6 +104,6 @@ public class Main {
         System.out.println("Alice Savings : " + aliceSavings.getBalance() + " RWF");
         System.out.println("Bob Wallet    : " + bobWallet.getBalance() + " RWF");
 
-        System.out.println("\n✓ LAB 1 complete.");
+        System.out.println("\n LAB 1 complete.");
     }
 }

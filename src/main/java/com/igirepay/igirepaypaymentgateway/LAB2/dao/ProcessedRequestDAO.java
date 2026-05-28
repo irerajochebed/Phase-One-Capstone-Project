@@ -16,7 +16,7 @@ public class ProcessedRequestDAO {
 
             ps.setString(1, referenceId);
             ps.executeUpdate();
-            System.out.println("[ProcessedRequestDAO] âœ“ Reference ID saved: " + referenceId);
+            System.out.println("[ProcessedRequestDAO]  Reference ID saved: " + referenceId);
             return true;
 
         } catch (SQLException e) {

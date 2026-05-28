@@ -81,7 +81,7 @@ public class WithdrawalService {
        
         sendWithdrawalRequestNotification(customerId, amount, availableDate, referenceId);
 
-        System.out.println("[WithdrawalService] âœ“ Withdrawal request created: " + message);
+        System.out.println("[WithdrawalService]  Withdrawal request created: " + message);
         return request;
     }
 
@@ -128,7 +128,7 @@ public class WithdrawalService {
 
         withdrawalRequestDAO.updateStatus(requestId, WithdrawalRequest.STATUS_PROCESSED);
 
-        System.out.println("[WithdrawalService] âœ“ Withdrawal request processed successfully");
+        System.out.println("[WithdrawalService]  Withdrawal request processed successfully");
         return true;
     }
 

@@ -61,7 +61,7 @@ public class TransactionsController implements Initializable {
                 "All Types", "DEPOSIT", "WITHDRAWAL", "TRANSFER"));
         typeFilterCombo.getSelectionModel().selectFirst();
 
-        // Wire table columns â€” each name must match a getter in TxRow
+        // Wire table columns  each name must match a getter in TxRow
         colDate.setCellValueFactory(new PropertyValueFactory<>("date"));
         colRef.setCellValueFactory(new PropertyValueFactory<>("ref"));
         colType.setCellValueFactory(new PropertyValueFactory<>("type"));

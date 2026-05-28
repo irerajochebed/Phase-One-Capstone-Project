@@ -33,7 +33,7 @@ public class AccountMenu {
                 case "3" -> viewBalance();
                 case "4" -> deleteAccount();
                 case "0" -> back = true;
-                default  -> System.out.println("Invalid option. Please enter 0â€“4.");
+                default  -> System.out.println("Invalid option. Please enter 04.");
             }
         }
     }
@@ -65,7 +65,7 @@ public class AccountMenu {
                     me.getId(), type, initialBalance, "RWF");
 
             if (account != null) {
-                System.out.println("âœ“ " + type + " account created!");
+                System.out.println(" " + type + " account created!");
                 System.out.printf("  Account ID : %d%n", account.getId());
                 System.out.printf("  Balance    : %.2f RWF%n", account.getBalance());
             } else {
@@ -95,7 +95,7 @@ public class AccountMenu {
 
             // Show all accounts and their balances
             System.out.printf("%-6s %-10s %15s  %s%n", "ID", "Type", "Balance", "Currency");
-            System.out.println("â”€".repeat(42));
+            System.out.println("".repeat(42));
             for (Account acc : accounts) {
                 System.out.printf("%-6d %-10s %15.2f  %s%n",
                         acc.getId(), acc.getAccountType(), acc.getBalance(), acc.getCurrency());
@@ -146,7 +146,7 @@ public class AccountMenu {
             }
 
             boolean deleted = paymentService.deleteAccount(accountId);
-            System.out.println(deleted ? "âœ“ Account deleted." : "âœ— Deletion failed.");
+            System.out.println(deleted ? " Account deleted." : " Deletion failed.");
 
         } catch (IgirePayException e) {
             System.out.println(" " + e.getMessage());

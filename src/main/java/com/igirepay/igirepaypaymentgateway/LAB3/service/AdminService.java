@@ -64,7 +64,7 @@ public class AdminService {
         if (success) {
             notificationService.notifyAccountUnlocked(customerId);
             notificationService.notifyPasswordReset(customerId);
-            System.out.println("[AdminService] âœ“ Customer " + customerId + " unlocked and notified");
+            System.out.println("[AdminService]  Customer " + customerId + " unlocked and notified");
         }
         return success;
     }
@@ -161,7 +161,7 @@ public class AdminService {
         );
 
         
-        System.out.println("[AdminService] âœ“ Funds frozen for dispute " + disputeId);
+        System.out.println("[AdminService]  Funds frozen for dispute " + disputeId);
         return true;
     }
 

@@ -26,7 +26,7 @@ import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
 /**
- * AdminPanelController â€” Comprehensive admin dashboard for managing users, accounts, and disputes
+ * AdminPanelController  Comprehensive admin dashboard for managing users, accounts, and disputes
  */
 public class AdminPanelController implements Initializable {
 
@@ -124,7 +124,7 @@ public class AdminPanelController implements Initializable {
             : "-fx-background-color: #DBEAFE; -fx-text-fill: #1E40AF; -fx-padding: 4 12; -fx-background-radius: 12; -fx-font-size: 11px; -fx-font-weight: bold;");
 
         if (customer.isLocked()) {
-            Label lockedBadge = new Label("ðŸ”’ LOCKED");
+            Label lockedBadge = new Label(" LOCKED");
             lockedBadge.setStyle("-fx-background-color: #FEE2E2; -fx-text-fill: #991B1B; -fx-padding: 4 12; -fx-background-radius: 12; -fx-font-size: 11px; -fx-font-weight: bold;");
             headerRow.getChildren().addAll(nameLabel, roleBadge, lockedBadge);
         } else {
@@ -133,10 +133,10 @@ public class AdminPanelController implements Initializable {
 
         // Info row
         VBox infoBox = new VBox(6);
-        Label emailLabel = new Label("ðŸ“§ " + customer.getEmail());
+        Label emailLabel = new Label(" " + customer.getEmail());
         emailLabel.setStyle("-fx-text-fill: #6B7280; -fx-font-size: 13px;");
         
-        Label phoneLabel = new Label("ðŸ“± " + customer.getPhoneNumber());
+        Label phoneLabel = new Label(" " + customer.getPhoneNumber());
         phoneLabel.setStyle("-fx-text-fill: #6B7280; -fx-font-size: 13px;");
 
         Label idLabel = new Label("ID: " + customer.getId());
@@ -151,18 +151,18 @@ public class AdminPanelController implements Initializable {
             long activeAccounts = accounts.stream().filter(Account::isActive).count();
             long inactiveAccounts = accounts.size() - activeAccounts;
             
-            Label balanceLabel = new Label("ðŸ’° Total Balance: " + String.format("%,.2f RWF", totalBalance));
+            Label balanceLabel = new Label(" Total Balance: " + String.format("%,.2f RWF", totalBalance));
             balanceLabel.setStyle("-fx-text-fill: #059669; -fx-font-size: 14px; -fx-font-weight: bold;");
             infoBox.getChildren().add(balanceLabel);
             
-            Label accountsLabel = new Label("ðŸ“Š Accounts: " + activeAccounts + " active, " + inactiveAccounts + " inactive");
+            Label accountsLabel = new Label(" Accounts: " + activeAccounts + " active, " + inactiveAccounts + " inactive");
             accountsLabel.setStyle("-fx-text-fill: #6B7280; -fx-font-size: 12px;");
             infoBox.getChildren().add(accountsLabel);
         }
 
         // Failed attempts warning
         if (customer.getFailedPinAttempts() > 0) {
-            Label attemptsLabel = new Label("âš ï¸ Failed PIN attempts: " + customer.getFailedPinAttempts() + "/3");
+            Label attemptsLabel = new Label(" Failed PIN attempts: " + customer.getFailedPinAttempts() + "/3");
             attemptsLabel.setStyle("-fx-text-fill: #DC2626; -fx-font-size: 12px; -fx-font-weight: bold;");
             infoBox.getChildren().add(attemptsLabel);
         }
@@ -172,36 +172,36 @@ public class AdminPanelController implements Initializable {
         actionBox.setAlignment(Pos.CENTER_LEFT);
 
         if (customer.isLocked()) {
-            Button unlockBtn = new Button("ðŸ”“ Unlock & Reset PIN");
+            Button unlockBtn = new Button(" Unlock & Reset PIN");
             unlockBtn.setStyle("-fx-background-color: #10B981; -fx-text-fill: white; -fx-padding: 8 16; -fx-background-radius: 8; -fx-cursor: hand; -fx-font-weight: bold;");
             unlockBtn.setOnAction(e -> onUnlockCustomer(customer));
             actionBox.getChildren().add(unlockBtn);
         }
 
-        Button viewAccountsBtn = new Button("ðŸ’³ View Accounts");
+        Button viewAccountsBtn = new Button(" View Accounts");
         viewAccountsBtn.setStyle("-fx-background-color: #3B82F6; -fx-text-fill: white; -fx-padding: 8 16; -fx-background-radius: 8; -fx-cursor: hand; -fx-font-weight: bold;");
         viewAccountsBtn.setOnAction(e -> onViewCustomerAccounts(customer));
         actionBox.getChildren().add(viewAccountsBtn);
 
-        Button sendMessageBtn = new Button("âœ‰ï¸ Send Message");
+        Button sendMessageBtn = new Button(" Send Message");
         sendMessageBtn.setStyle("-fx-background-color: #8B5CF6; -fx-text-fill: white; -fx-padding: 8 16; -fx-background-radius: 8; -fx-cursor: hand; -fx-font-weight: bold;");
         sendMessageBtn.setOnAction(e -> onSendMessageToCustomer(customer));
         actionBox.getChildren().add(sendMessageBtn);
 
         if (!customer.isAdmin()) {
-            Button promoteBtn = new Button("ðŸ‘‘ Make Admin");
+            Button promoteBtn = new Button(" Make Admin");
             promoteBtn.setStyle("-fx-background-color: #F59E0B; -fx-text-fill: white; -fx-padding: 8 16; -fx-background-radius: 8; -fx-cursor: hand; -fx-font-weight: bold;");
             promoteBtn.setOnAction(e -> onPromoteToAdmin(customer));
             actionBox.getChildren().add(promoteBtn);
         } else if (customer.getId() != state.getCurrentCustomer().getId()) {
-            Button demoteBtn = new Button("ðŸ‘¤ Remove Admin");
+            Button demoteBtn = new Button(" Remove Admin");
             demoteBtn.setStyle("-fx-background-color: #6B7280; -fx-text-fill: white; -fx-padding: 8 16; -fx-background-radius: 8; -fx-cursor: hand; -fx-font-weight: bold;");
             demoteBtn.setOnAction(e -> onDemoteToUser(customer));
             actionBox.getChildren().add(demoteBtn);
         }
 
         if (customer.getId() != state.getCurrentCustomer().getId()) {
-            Button deleteBtn = new Button("ðŸ—‘ Delete");
+            Button deleteBtn = new Button(" Delete");
             deleteBtn.setStyle("-fx-background-color: #EF4444; -fx-text-fill: white; -fx-padding: 8 16; -fx-background-radius: 8; -fx-cursor: hand; -fx-font-weight: bold;");
             deleteBtn.setOnAction(e -> onDeleteCustomer(customer));
             actionBox.getChildren().add(deleteBtn);
@@ -211,18 +211,18 @@ public class AdminPanelController implements Initializable {
         return card;
     }
 
-    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+    // 
     // ADMIN ACTIONS
-    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+    // 
 
     private void onUnlockCustomer(Customer customer) {
         boolean confirmed = showConfirmationDialog(
             "Unlock Account & Reset PIN",
             "Unlock " + customer.getFullName() + "'s account?",
             "This will:\n" +
-            "â€¢ Reset their failed PIN attempts to 0\n" +
-            "â€¢ Unlock their account for login\n" +
-            "â€¢ Send them a notification to change their PIN\n\n" +
+            " Reset their failed PIN attempts to 0\n" +
+            " Unlock their account for login\n" +
+            " Send them a notification to change their PIN\n\n" +
             "Customer: " + customer.getFullName() + "\n" +
             "Email: " + customer.getEmail() + "\n" +
             "Phone: " + customer.getPhoneNumber() + "\n\n" +
@@ -240,9 +240,9 @@ public class AdminPanelController implements Initializable {
                 showSuccessDialog("Account Unlocked", 
                     "Success!", 
                     customer.getFullName() + "'s account has been unlocked.\n\n" +
-                    "âœ… Account unlocked\n" +
-                    "âœ… Failed attempts reset to 0\n" +
-                    "âœ… Notification sent to customer\n\n" +
+                    " Account unlocked\n" +
+                    " Failed attempts reset to 0\n" +
+                    " Notification sent to customer\n\n" +
                     "The customer can now login and will be prompted to change their PIN.");
                 loadCustomers();
                 loadStatistics();
@@ -266,10 +266,10 @@ public class AdminPanelController implements Initializable {
             "Promote to Admin",
             "Make " + customer.getFullName() + " an administrator?",
             "This will give them full admin privileges including:\n" +
-            "â€¢ Access to admin panel\n" +
-            "â€¢ Ability to unlock accounts\n" +
-            "â€¢ Ability to manage other users\n" +
-            "â€¢ View all customer data\n\n" +
+            " Access to admin panel\n" +
+            " Ability to unlock accounts\n" +
+            " Ability to manage other users\n" +
+            " View all customer data\n\n" +
             "Customer: " + customer.getFullName() + "\n" +
             "Email: " + customer.getEmail()
         );
@@ -315,24 +315,24 @@ public class AdminPanelController implements Initializable {
         
         StringBuilder details = new StringBuilder();
         details.append("CUSTOMER INFORMATION\n");
-        details.append("â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”\n\n");
+        details.append("\n\n");
         details.append("Name: ").append(customer.getFullName()).append("\n");
         details.append("Email: ").append(customer.getEmail()).append("\n");
         details.append("Phone: ").append(customer.getPhoneNumber()).append("\n");
         details.append("Role: ").append(customer.getRole()).append("\n");
-        details.append("Status: ").append(customer.isLocked() ? "ðŸ”’ LOCKED" : "âœ… Active").append("\n");
+        details.append("Status: ").append(customer.isLocked() ? " LOCKED" : " Active").append("\n");
         details.append("Failed Attempts: ").append(customer.getFailedPinAttempts()).append("/3\n");
         details.append("Customer ID: ").append(customer.getId()).append("\n\n");
         
         details.append("ACCOUNTS\n");
-        details.append("â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”\n\n");
+        details.append("\n\n");
         
         if (accounts.isEmpty()) {
             details.append("No accounts yet\n");
         } else {
             double total = 0;
             for (Account acc : accounts) {
-                String status = acc.isActive() ? "âœ… Active" : "âŒ Inactive";
+                String status = acc.isActive() ? " Active" : " Inactive";
                 details.append(acc.getAccountType()).append(" Account (").append(status).append(")\n");
                 details.append("  ID: ").append(acc.getId()).append("\n");
                 details.append("  Balance: ").append(String.format("%,.2f", acc.getBalance())).append(" ").append(acc.getCurrency()).append("\n");
@@ -371,7 +371,7 @@ public class AdminPanelController implements Initializable {
             accountCard.setStyle("-fx-border-color: #E5E7EB; -fx-border-width: 1; -fx-border-radius: 8; " +
                                "-fx-background-radius: 8; -fx-padding: 12; -fx-background-color: white;");
 
-            String statusIcon = account.isActive() ? "âœ…" : "âŒ";
+            String statusIcon = account.isActive() ? "" : "";
             String statusText = account.isActive() ? "Active" : "Inactive";
             
             Label typeLabel = new Label(statusIcon + " " + account.getAccountType() + " Account - " + statusText);
@@ -392,7 +392,7 @@ public class AdminPanelController implements Initializable {
             HBox buttonBox = new HBox(8);
             
             if (!account.isActive() && account.getBalance() == 0) {
-                Button deleteBtn = new Button("ðŸ—‘ Delete Inactive Account");
+                Button deleteBtn = new Button(" Delete Inactive Account");
                 deleteBtn.setStyle("-fx-background-color: #EF4444; -fx-text-fill: white;");
                 deleteBtn.setOnAction(e -> {
                     if (onDeleteInactiveAccount(account)) {
@@ -403,7 +403,7 @@ public class AdminPanelController implements Initializable {
                 });
                 buttonBox.getChildren().add(deleteBtn);
             } else if (!account.isActive()) {
-                Label warningLabel = new Label("âš ï¸ Cannot delete: Account has balance");
+                Label warningLabel = new Label(" Cannot delete: Account has balance");
                 warningLabel.setStyle("-fx-text-fill: #DC2626; -fx-font-size: 11px;");
                 buttonBox.getChildren().add(warningLabel);
             }
@@ -530,13 +530,13 @@ public class AdminPanelController implements Initializable {
 
     private void onDeleteCustomer(Customer customer) {
         boolean confirmed = showConfirmationDialog(
-            "âš ï¸ Delete Customer",
+            " Delete Customer",
             "Permanently delete " + customer.getFullName() + "?",
             "WARNING: This action cannot be undone!\n\n" +
             "This will delete:\n" +
-            "â€¢ Customer account\n" +
-            "â€¢ All their accounts (wallet, savings)\n" +
-            "â€¢ All transaction history\n\n" +
+            " Customer account\n" +
+            " All their accounts (wallet, savings)\n" +
+            " All transaction history\n\n" +
             "Customer: " + customer.getFullName() + "\n" +
             "Email: " + customer.getEmail() + "\n" +
             "Phone: " + customer.getPhoneNumber() + "\n\n" +
@@ -559,9 +559,9 @@ public class AdminPanelController implements Initializable {
         }
     }
 
-    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+    // 
     // SEARCH & FILTER
-    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+    // 
 
     @FXML
     private void onSearch() {
@@ -618,9 +618,9 @@ public class AdminPanelController implements Initializable {
         showSuccess("Refreshed!");
     }
 
-    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+    // 
     // DIALOG HELPERS
-    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+    // 
 
     private boolean showConfirmationDialog(String title, String header, String content) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -666,9 +666,9 @@ public class AdminPanelController implements Initializable {
         System.out.println("[AdminPanel] " + msg);
     }
 
-    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+    // 
     // NAVIGATION
-    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+    // 
 
     @FXML private void onBack()         { 
         System.out.println("[AdminPanel] Back button clicked - navigating to dashboard");

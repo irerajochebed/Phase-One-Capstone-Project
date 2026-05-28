@@ -27,13 +27,13 @@ import java.util.ResourceBundle;
 import java.util.UUID;
 
 /**
- * SendMoneyController â€” send money by PHONE NUMBER.
+ * SendMoneyController  send money by PHONE NUMBER.
  *
  * Flow:
  *   1. User types recipient's phone number
- *   2. App looks up the customer by phone â†’ shows their name as confirmation
- *   3. User enters amount + PIN â†’ transfer executes
- *   4. If account not found â†’ JDBC rollback â†’ balance unchanged â†’ user can retry
+ *   2. App looks up the customer by phone  shows their name as confirmation
+ *   3. User enters amount + PIN  transfer executes
+ *   4. If account not found  JDBC rollback  balance unchanged  user can retry
  */
 public class SendMoneyController implements Initializable {
 
@@ -64,13 +64,13 @@ public class SendMoneyController implements Initializable {
         var items = FXCollections.<String>observableArrayList();
         for (Account acc : myAccounts)
             items.add("[" + acc.getId() + "] " + acc.getAccountType()
-                    + "  â€”  " + String.format("%,.2f", acc.getBalance()) + " RWF");
+                    + "    " + String.format("%,.2f", acc.getBalance()) + " RWF");
         fromAccountCombo.setItems(items);
         if (!items.isEmpty()) fromAccountCombo.getSelectionModel().selectFirst();
 
         highlightCard(true);
 
-        // Live phone lookup â€” as user types, resolve the recipient name
+        // Live phone lookup  as user types, resolve the recipient name
         toAccountField.textProperty().addListener((obs, oldVal, newVal) -> {
             String phone = newVal.trim();
             if (phone.length() >= 9) {
@@ -80,7 +80,7 @@ public class SendMoneyController implements Initializable {
             }
         });
 
-        // Live fee calculation â€” as user types amount, show the fee
+        // Live fee calculation  as user types amount, show the fee
         amountField.textProperty().addListener((obs, oldVal, newVal) -> {
             try {
                 if (feeLabel != null) { // Null check to prevent crashes
@@ -118,11 +118,11 @@ public class SendMoneyController implements Initializable {
                 List<Account> accs = state.getPaymentService()
                         .getAccountsByCustomer(found.getId());
                 String extra = accs.isEmpty() ? "  (wallet will be created)" : "";
-                recipientLabel.setText("âœ“  " + found.getFullName() + extra);
+                recipientLabel.setText("  " + found.getFullName() + extra);
                 recipientLabel.setStyle(
                         "-fx-text-fill:#10B981; -fx-font-size:13px; -fx-font-weight:bold;");
             } else {
-                recipientLabel.setText("âœ—  No IRO account found for this number");
+                recipientLabel.setText("  No IRO account found for this number");
                 recipientLabel.setStyle("-fx-text-fill:#EF4444; -fx-font-size:12px;");
             }
         } catch (Exception e) {
@@ -175,7 +175,7 @@ public class SendMoneyController implements Initializable {
             int fromId = myAccounts.get(idx).getId();
             Account fromAccount = myAccounts.get(idx);
             int toId;
-            boolean isInternalTransfer = false; // wallet â†’ savings for same customer
+            boolean isInternalTransfer = false; // wallet  savings for same customer
             String transferType = "";
 
             if ("IRO".equals(transferMode)) {
@@ -194,7 +194,7 @@ public class SendMoneyController implements Initializable {
                 }
                 Customer currentCustomer = state.getCurrentCustomer();
                 if (recipient.getId() == currentCustomer.getId()) {
-                    // Same customer - check if it's wallet â†’ savings
+                    // Same customer - check if it's wallet  savings
                     List<Account> myAllAccounts = state.getPaymentService()
                             .getAccountsByCustomer(currentCustomer.getId());
                     Account targetAccount = null;
@@ -213,7 +213,7 @@ public class SendMoneyController implements Initializable {
                     }
 
                     // Show confirmation dialog for internal transfer
-                    transferType = fromAccount.getAccountType() + " â†’ " + targetAccount.getAccountType();
+                    transferType = fromAccount.getAccountType() + "  " + targetAccount.getAccountType();
                     boolean confirmed = showConfirmationDialog(
                             "Internal Transfer",
                             "Transfer " + String.format("%,.2f", amount) + " RWF",
@@ -229,7 +229,7 @@ public class SendMoneyController implements Initializable {
                         return;
                     }
 
-                    // This is an internal transfer (wallet â†” savings) - no fee
+                    // This is an internal transfer (wallet  savings) - no fee
                     toId = targetAccount.getId();
                     isInternalTransfer = true;
                 } else {
@@ -249,7 +249,7 @@ public class SendMoneyController implements Initializable {
                         }
                         toId = newAcc.getId();
                         System.out.println("[SendMoney] Auto-created wallet for recipient id="
-                                + recipient.getId() + " â†’ account id=" + toId);
+                                + recipient.getId() + "  account id=" + toId);
                     } else {
                         // Use their first WALLET account, or fall back to first account
                         toId = recipientAccounts.stream()
@@ -281,7 +281,7 @@ public class SendMoneyController implements Initializable {
                 }
 
             } else {
-                // Bank mode â€” use numeric ID directly
+                // Bank mode  use numeric ID directly
                 toId = Integer.parseInt(toInput);
                 
                 double fee = ValidationUtil.calculateTransactionFee(amount);
@@ -344,9 +344,9 @@ public class SendMoneyController implements Initializable {
                 showErrorDialog("Transfer Failed",
                         "The transfer could not be completed",
                         "Possible reasons:\n" +
-                        "â€¢ Insufficient funds\n" +
-                        "â€¢ Account not found\n" +
-                        "â€¢ Network error\n\n" +
+                        " Insufficient funds\n" +
+                        " Account not found\n" +
+                        " Network error\n\n" +
                         "Your balance was NOT deducted. You can try again.");
             }
 

@@ -32,9 +32,9 @@ public class DashboardContentController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        System.out.println("â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•");
+        System.out.println("");
         System.out.println("[DashboardContent] INITIALIZE CALLED");
-        System.out.println("â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•");
+        System.out.println("");
         
         Customer customer = state.getCurrentCustomer();
         if (customer == null) {
@@ -42,7 +42,7 @@ public class DashboardContentController implements Initializable {
             return;
         }
 
-        System.out.println("[DashboardContent] âœ“ Customer loaded: " + customer.getFullName());
+        System.out.println("[DashboardContent]  Customer loaded: " + customer.getFullName());
         System.out.println("[DashboardContent]   - ID: " + customer.getId());
         System.out.println("[DashboardContent]   - Email: " + customer.getEmail());
         System.out.println("[DashboardContent]   - Role: " + customer.getRole());
@@ -59,14 +59,14 @@ public class DashboardContentController implements Initializable {
             if (adminPanelSection != null) {
                 adminPanelSection.setManaged(true);
                 adminPanelSection.setVisible(true);
-                System.out.println("[DashboardContent] âœ“ Admin panel section ENABLED");
+                System.out.println("[DashboardContent]  Admin panel section ENABLED");
                 System.out.println("[DashboardContent]   - setManaged(true) called");
                 System.out.println("[DashboardContent]   - setVisible(true) called");
             } else {
-                System.err.println("[DashboardContent] âœ— ERROR: adminPanelSection is NULL!");
+                System.err.println("[DashboardContent]  ERROR: adminPanelSection is NULL!");
             }
         } else {
-            System.out.println("[DashboardContent] â„¹ User is not admin, panel hidden");
+            System.out.println("[DashboardContent]  User is not admin, panel hidden");
         }
 
         List<Account> accounts = state.getPaymentService()
@@ -75,13 +75,13 @@ public class DashboardContentController implements Initializable {
         updateBalance();
         loadRecent(accounts);
         
-        System.out.println("[DashboardContent] âœ“ Initialize complete");
-        System.out.println("â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•");
+        System.out.println("[DashboardContent]  Initialize complete");
+        System.out.println("");
     }
 
     private void updateBalance() {
         balanceLabel.setText(balanceVisible
-                ? String.format("%,.0f", totalBalance) : "â€¢â€¢â€¢â€¢â€¢â€¢");
+                ? String.format("%,.0f", totalBalance) : "");
     }
 
     @FXML private void onToggleBalance() {
